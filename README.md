@@ -1,2 +1,2 @@
-# canopy-story
+# Canpoy Story
 Code powering canopystory.org
