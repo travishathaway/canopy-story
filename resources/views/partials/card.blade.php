@@ -1,12 +1,33 @@
 <div class="card" style="margin-top: 14px;">
-  <div class="container container-fluid">
+  <div class="container container-fluid image-container">
     @if(count(($post->images)) > 0 )
     <div class="row">
-      <div class="col-md-12">
-        <div class="card-image-container">
-          <div class="card-image" 
-            style="background-image:url('{{ asset('storage/' . $post->images[0]->image_url)}}');">
+      <div class="col-md-12 ">
+        <div class="card-image">
+          @foreach($post->images as $idx => $img)
+          @if($idx !== 0)
+          <div class="card-image-container" style="display: none">
+          @else
+          <div class="card-image-container">
+          @endif
+            <a href="{{asset('storage/' . $img->image_url)}}" data-fancybox="images-{{$post->id}}">
+              <img src="{{Image::url(asset('storage/' . $img->image_url),400,375,array('crop')) }}" 
+                style="height: auto; width: 100%; text-align: center"/>
+            </a>
           </div>
+          @endforeach
+          @if(count(($post->images)) > 1 )
+          <div class="card-image-controls">
+            <div class="pull-right">
+              <span class="control right-control">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+              </a>
+            </div>
+            <span class="control left-control">
+              <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+          </div>
+          @endif
         </div>
       </div>
     </div>
@@ -16,6 +37,7 @@
         <strong>By: </strong>{{ $post->user->first_name}}  {{ $post->user->last_name}}
       </div>
       <div class="col-md-3">
+        @if($user) 
         @if($user->id == $post->user_id || $user->isAdmin())
         <form method="POST" onsubmit="return confirm('Are you sure you want to delete this post?')" action="{{route('post.delete', $post->id)}}"
           class="pull-right">
@@ -35,6 +57,7 @@
             <span class="glyphicon glyphicon-flag"></span>
           </button>
         </form>
+        @endif
         @endif
       </div>
     </div>

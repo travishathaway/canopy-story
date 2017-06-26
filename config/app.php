@@ -182,6 +182,10 @@ return [
          */
         Laravel\Socialite\SocialiteServiceProvider::class,
 
+        /**
+         * Folklore Image <https://github.com/Folkloreatelier/laravel-image>
+         */
+        Folklore\Image\ImageServiceProvider::class,
 
     ],
 
@@ -232,6 +236,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'Image' => Folklore\Image\Facades\Image::class,
 
     ],
 

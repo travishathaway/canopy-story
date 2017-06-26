@@ -9,10 +9,6 @@ use App\Models\PostImage;
 
 class PostController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     /**
      *
      */
@@ -93,7 +89,11 @@ class PostController extends Controller
     public function get(Request $request)
     {
         $posts = Post::where('flagged', '=', false)->paginate(20);
-        $user = User::find($request->user()->id);
+        $user = $request->user();
+
+        if($user){
+            $user = User::find($user->id);
+        }
 
         return view('posts.list', [
             'posts' => $posts,

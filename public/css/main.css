@@ -46,6 +46,7 @@ body {
 }
 
 .card-image {
+    position: relative;
     height: 100%;
     border: 1px solid #999;
     box-shadow: 0px 0px 1px 1px #999;
@@ -57,6 +58,24 @@ body {
 .card-image-container {
     height: 250px;
     overflow: hidden;
+}
+
+.card-image-controls {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.60);
+  height: 25px;
+  font-size: 1.3em;
+}
+
+.card-image-controls .control {
+  margin: 3px;
+  color: #ddd;
+}
+
+.card-image-controls .control:hover {
+  cursor: pointer;
 }
 
 #cards-container {

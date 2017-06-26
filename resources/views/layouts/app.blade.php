@@ -8,6 +8,8 @@
 
         <link rel="stylesheet" href="//cdn.research.pdx.edu/bootstrap/3.3.6/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="{{asset('css/main.css') }}">
+        @section('style')
+        @show
 
         <script src="//cdn.research.pdx.edu/jquery/2.2.1/jquery-2.2.1.min.js"></script>	
         <script src="//cdn.research.pdx.edu/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -15,5 +17,8 @@
     <body>
         <div id="list-background"></div>
         @yield('content')
+
+        @section('script')
+        @show
     </body>
 </html>

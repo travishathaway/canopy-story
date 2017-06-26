@@ -53,7 +53,7 @@ Route::get('/logout', function(){
  */
 Route::get('/popup', function(){
   return view('partials.popup');
-});
+})->middleware('auth');
 
 /**
  * Simple page that has facebook and google login links
@@ -63,19 +63,12 @@ Route::get('/partials/social-login', function(){
 });
 
 /**
- * Shows the list of tree posts
- */
-Route::get('/list', function(){
-  return view('list');
-});
-
-/**
  * Get and retrieve a post image
  */
 Route::post('/post/image', [
   'as' => 'post.image.create',
   'uses' => 'PostImageController@create'
-]);
+])->middleware('auth');;
 
 Route::get('/post/image', [
   'as' => 'post.image',
@@ -89,17 +82,17 @@ Route::get('/post/image', [
 Route::post('/post/{id}', [
   'as' => 'post.update', 
   'uses' => 'PostController@update'
-]);
+])->middleware('auth');;
 
 Route::post('/post/{id}/delete', [
   'as' => 'post.delete', 
   'uses' => 'PostController@delete'
-]);
+])->middleware('auth');;
 
 Route::post('/post', [
   'as' => 'post.create', 
   'uses' => 'PostController@create'
-]);
+])->middleware('auth');;
 
 Route::get('/post', [
   'as' => 'post', 
