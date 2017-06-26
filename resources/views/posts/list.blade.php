@@ -18,10 +18,10 @@
     </div>
     <div class="row" id="search">
         <div class="col-md-12">
-            <form action="" method="post">
+            <form action="" method="get">
                 <div class="row">
                     <div class="col-md-offset-1 col-md-8">
-                        <input type="text" class="form-control" name="searchform" placeholder="Seach for a Tree Story">
+                        <input type="text" class="form-control" name="q" placeholder="Seach for a Tree Story">
                     </div>
                     <div class="col-md-3">
                         <div class="btn-group pull-right" id="search-buttons">
@@ -88,3 +88,4 @@ $(document).ready(function(){
 });
 </script>
 @endsection
+

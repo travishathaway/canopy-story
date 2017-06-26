@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Post;
@@ -88,7 +89,19 @@ class PostController extends Controller
 
     public function get(Request $request)
     {
-        $posts = Post::where('flagged', '=', false)->paginate(20);
+      $query = Post::with('images')/**->with(['user' => function($q) use ($request){
+          if($request->q){
+              $q->orWhere('last_name', 'like', $request->q)
+                ->orWhere('first_name', 'like', $request->q);
+          }
+      }])*/->where(function($query) use ($request){
+          if($request->q){
+              $query->where('content', 'like', $request->q)
+                  ->orWhere('tree_location', 'like', $request->q)
+                  ->orWhere('posts.created_at', 'like', $request->q);
+          }
+      })->where('flagged', '=', false);
+        $posts = $query->paginate(20);
         $user = $request->user();
 
         if($user){
