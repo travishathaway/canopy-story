@@ -17,6 +17,23 @@ class CreateRoles extends Migration
             $table->text('name');
             $table->timestamps();
         });
+
+        // Insert the default roles
+        DB::table('roles')->insert(
+            array(
+                'name' => 'user',
+                'created_at' => \Carbon\Carbon::now(),
+                'updated_at' => \Carbon\Carbon::now()
+            )
+        );
+        DB::table('roles')->insert(
+            array(
+                'name' => 'administrator',
+                'created_at' => \Carbon\Carbon::now(),
+                'updated_at' => \Carbon\Carbon::now()
+            )
+        );
+
     }
 
     /**
