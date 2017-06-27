@@ -187,6 +187,11 @@ return [
          */
         Folklore\Image\ImageServiceProvider::class,
 
+        /**
+         * Minify <https://github.com/DevFactoryCH/minify>
+         */
+        Devfactory\Minify\MinifyServiceProvider::class,
+
     ],
 
     /*
@@ -237,7 +242,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Image' => Folklore\Image\Facades\Image::class,
-
+        'Minify' => Devfactory\Minify\Facades\MinifyFacade::class,
     ],
 
 ];
