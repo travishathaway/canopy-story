@@ -7,6 +7,7 @@
 
     <script src="//cdn.research.pdx.edu/leaflet/0.7.7/leaflet.js"></script>
     <script src="//cdn.research.pdx.edu/jquery/2.2.1/jquery-2.2.1.min.js"></script>
+	  <script src="//cdn.research.pdx.edu/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 	  <link rel="stylesheet" href="//cdn.research.pdx.edu/bootstrap/3.3.6/css/bootstrap.min.css">
 	  <link rel="stylesheet" href="//cdn.research.pdx.edu/leaflet/0.7.7/leaflet.css">

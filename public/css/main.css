@@ -117,13 +117,21 @@ html, body {
     visibility: hidden;
 }
 
+#legend .row {
+  margin-top: 10px;
+}
+
+#legend .row.key img {
+  padding-right: 5px;
+}
+
 #legend > p > a {
-    background-color: #999!important;
+    background-color: #999;
     border: 1px solid #444;
 }
 
 #legend > p > a:hover {
-    background-color: #aaa!important;
+    background-color: #aaa;
 }
 
 #legend > table > tbody > tr > td {
@@ -489,4 +497,15 @@ th {
 
 #wrapper {
     height: 100px;
+}
+
+#tutorial-iframe {
+  width: 100%;
+  height: 450px;
+}
+
+.modal-footer-center {
+  padding: 15px;
+  text-align: center;
+  border-top: 1px solid #e5e5e5;
 }

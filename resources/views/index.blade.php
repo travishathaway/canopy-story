@@ -4,16 +4,36 @@
 
 @section('content')
     <div id="map"></div>
+    <div id="tutorial-modal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" 
+      aria-labelledby="myLargeModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h1 class="modal-title text-center" >{{ config('app.name')}}</h1>
+          </div>
+          <div class="modal-body">
+            <iframe	id="tutorial-iframe" src="https://climatecope.research.pdx.edu/csSS/csSS.php?title={{ config('app.name') }}"></iframe>
+          </div>
+          <div class="modal-footer-center">
+            <button type="button" class="btn btn-primary" 
+              data-dismiss="modal" aria-label="Close">
+              Tell My Story
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="destroyer" id="copyR">
       <div id="internal">
         <div id="header">
-          <h1>{{ config('app.name')}}</h1>
         </div>
         <div id="main-text">
-          <iframe	src="https://climatecope.research.pdx.edu/csSS/csSS.php?title={{ config('app.name') }}"></iframe>
         </div>
         <div id="footer">
-          <button id="tell-my-story" onclick="destroyButton()">Tell My Story</button>
+            <button id="tell-my-story" onclick="destroyButton()">Tell My Story</button>
         </div>
       </div>
     </div>
@@ -32,10 +52,10 @@ var logged_in = true;
 
 function checkLogin(){
     try{
-        if(logged_in === true){
-            destroyButton();
+        if(logged_in !== true){
+          $('#tutorial-modal').modal('show');
         } else {
-            $('.destroyer').css('visibility', 'visible');
+          $('#legend').css({'visibility': 'visible'});
         }
     } catch(ReferenceError){
         setTimeout(function(){
@@ -48,6 +68,10 @@ checkLogin();
 
 var updated = [];
 var updated_trees = [];
+
+$('#tutorial-modal').on('hide.bs.modal', function(){
+  $('#legend').css({'visibility': 'visible'});
+});
 
 </script>
 <script src="{{ asset('js/popup.js') }}" type="text/javascript"></script>

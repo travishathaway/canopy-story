@@ -9,11 +9,6 @@ clusterZoom = 17;
 loadnumber = 1;
 var noHighlight = [];
 
-function destroyButton() {
-    $( "div" ).remove( ".destroyer" );
-    $("#legend").css("visibility", "visible");
-}
-
 // Add colors for map elements
 function doStylenbo(feature) {
     return {
