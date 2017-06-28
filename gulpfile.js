@@ -19,8 +19,6 @@ elixir(mix => {
         '../bower/fancybox/dist/jquery.fancybox.min.css',
     ])
 
-    mix.version('css/all.css');
-
     // Combine JS
     mix.scripts([
         '../bower/jquery/dist/jquery.js',
@@ -30,7 +28,8 @@ elixir(mix => {
         '../bower/leaflet-hash/leaflet-hash.js',
     ]);
 
-    mix.version('js/all.js');
+
+    mix.version(['css/all.css', 'js/all.js']);
 
     // Copy over images and fonts
     mix.copy('resources/assets/bower/leaflet/dist/images', 'public/build/images');
