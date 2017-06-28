@@ -41,6 +41,8 @@
         </div>
     </div>
 </div>
+@section('scripts')
+@parent
 <script>
 var hidden = false;
 $("#hide").click(function(){
@@ -65,3 +67,4 @@ $("#hide").click(function(){
     }
 });
 </script>
+@endsection

@@ -42,6 +42,7 @@
 @endsection
 
 @section('scripts')
+@parent
 <script>
 var base_dir = '{{ config('app.url')}}';
 @if(Auth::check())
@@ -77,5 +78,4 @@ $('#tutorial-modal').on('hide.bs.modal', function(){
 <script src="{{ asset('js/popup.js') }}" type="text/javascript"></script>
 <script src="{{ asset('js/main.js') }}" type="text/javascript"></script>
 <script src="{{ asset('js/resumable.js') }}" type="text/javascript"></script>
-<script src="https://apis.google.com/js/platform.js" async defer></script>
 @endsection

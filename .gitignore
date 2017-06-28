@@ -15,3 +15,8 @@ npm-debug.log
 
 *.swp
 *.swo
+
+resources/assets/bower
+
+public/js/all.js
+public/css
