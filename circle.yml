@@ -1,0 +1,30 @@
+machine:
+  timezone:
+    America/Los_Angeles
+
+  php:
+    version: 7.1
+
+  environment:
+    ENVIRONMENT: testing
+    DB_HOST: 127.0.0.1
+    DB_NAME: circle_test
+    DB_USER: ubuntu
+    DB_CONNECTION: mysql
+    APP_KEY: abcdefghijklmnopqrstuvwxyz123456
+
+dependencies:
+  override:
+    - composer install --no-interaction
+    - php artisan key:generate
+    - php artisan migrate
+
+test:
+  override:
+    - vendor/bin/phpunit
+
+deployment:
+  production:
+    branch: master
+    commands:
+      - wget https://canopystory.org
