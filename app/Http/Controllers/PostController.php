@@ -60,8 +60,11 @@ class PostController extends Controller
             return abort(404);
         }
 
-        if($user->id != $post->user_id || !$user->isAdmin()){
-            return abort(403, "You are not authorized to perform this action");
+
+        if(!$user->isAdmin() && $user->id != $post->user_id){
+            return abort(
+                403, "You are not authorized to perform this action"
+            );
         }
 
         $post->flagged = $request->input('flagged');
@@ -79,7 +82,7 @@ class PostController extends Controller
             return abort(404);
         }
 
-        if($user->id != $post->user_id || !$user->isAdmin()){
+        if(!$user->isAdmin() && $user->id != $post->user_id){
             return abort(403, "You are not authorized to perform this action");
         }
 

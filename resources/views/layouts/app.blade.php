@@ -6,13 +6,11 @@
 
         <meta charset="utf-8" />
 
-        <link rel="stylesheet" href="//cdn.research.pdx.edu/bootstrap/3.3.6/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="{{asset('css/main.css') }}">
+        <link rel="stylesheet" href="{{ elixir('css/all.css') }}" />
         @section('style')
         @show
 
-        <script src="//cdn.research.pdx.edu/jquery/2.2.1/jquery-2.2.1.min.js"></script>	
-        <script src="//cdn.research.pdx.edu/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src="{{ elixir('js/all.js') }}"></script>
     </head>
     <body>
         <div id="list-background"></div>
