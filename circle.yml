@@ -5,17 +5,10 @@ machine:
   php:
     version: 7.0.4
 
-  environment:
-    ENVIRONMENT: testing
-    DB_HOST: 127.0.0.1
-    DB_NAME: circle_test
-    DB_USER: ubuntu
-    DB_CONNECTION: mysql
-    APP_KEY: abcdefghijklmnopqrstuvwxyz123456
-
 dependencies:
   override:
     - composer install --no-interaction
+    - cp .env.circle .env
     - php artisan key:generate
     - php artisan migrate
 
