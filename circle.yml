@@ -9,8 +9,6 @@ dependencies:
   override:
     - composer install --no-interaction
     - cp .env.circle .env
-    - php artisan key:generate
-    - php artisan config:clear
     - php artisan migrate
 
 test:
