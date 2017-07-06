@@ -22,21 +22,21 @@
     </div>
     <div class="row key">
         <div class="col-sm-6">
-            <img src="{{ asset('images/light.png') }}" class="pull-left" />
+            <img src="{{ asset('build/images/light.png') }}" class="pull-left" />
             Lighter - Less Stories
         </div>
         <div class="col-sm-6">
-            <img src="{{ asset('images/t_light.png') }}" class="pull-left" />
+            <img src="{{ asset('build/images/t_light.png') }}" class="pull-left" />
             Lighter - Less Stories
         </div>
     </div>
     <div class="row key">
         <div class="col-sm-6">
-            <img src="{{ asset('images/dark.png') }}" class="pull-left" />
+            <img src="{{ asset('build/images/dark.png') }}" class="pull-left" />
             Dark - More Stories
         </div>
         <div class="col-sm-6">
-            <img src="{{ asset('images/t_dark.png') }}" class="pull-left" />
+            <img src="{{ asset('build/images/t_dark.png') }}" class="pull-left" />
             Darker - More Stories
         </div>
     </div>

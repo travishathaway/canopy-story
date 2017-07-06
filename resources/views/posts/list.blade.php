@@ -1,9 +1,5 @@
 @extends('layouts.app')
 
-@section('style')
-<link rel="stylesheet" type="text/css" href="{{asset('css/jquery.fancybox.min.css') }}">
-@endsection
-
 @section('content')
 <div id="list-container" class="container">
     <div class="row" id="list_header">

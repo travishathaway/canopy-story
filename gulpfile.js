@@ -1,4 +1,5 @@
 const elixir = require('laravel-elixir');
+const gulp = require('gulp');
 
 require('laravel-elixir-remove');
 
@@ -28,10 +29,17 @@ elixir(mix => {
         '../bower/leaflet-hash/leaflet-hash.js',
     ]);
 
+    mix.scripts([
+        'popup.js', 
+        'main.js',
+        '../bower/resumable.js/resumable.js'
+    ], 'public/js/map.js')
 
-    mix.version(['css/all.css', 'js/all.js']);
+    // Version compiled assets
+    mix.version(['css/all.css', 'js/all.js', 'js/map.js']);
 
     // Copy over images and fonts
     mix.copy('resources/assets/bower/leaflet/dist/images', 'public/build/images');
     mix.copy('resources/assets/bower/bootstrap/dist/fonts', 'public/build/fonts');
+    mix.copy('resources/assets/images/', 'public/build/images');
 });

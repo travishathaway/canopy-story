@@ -75,7 +75,5 @@ $('#tutorial-modal').on('hide.bs.modal', function(){
 });
 
 </script>
-<script src="{{ asset('js/popup.js') }}" type="text/javascript"></script>
-<script src="{{ asset('js/main.js') }}" type="text/javascript"></script>
-<script src="{{ asset('js/resumable.js') }}" type="text/javascript"></script>
+<script src="{{ elixir('js/map.js') }}" type="text/javascript"></script>
 @endsection
