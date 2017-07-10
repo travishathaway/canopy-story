@@ -194,7 +194,6 @@ function zoomToFeature(e) {
     } else {
         setTimeout(loadingGIF(),1)
         if(map.getZoom() >17){
-            //console.log(map.getZoom())
         } else{
             map.fitBounds(e.target.getBounds());
         }
@@ -353,7 +352,8 @@ function nboChange(x){
 
         var contains = false;
         var story_count = 0;
-      var image_url = [];
+        var image_url = [];
+
         $(updated_trees).each(function(){
             if($(this)[0] == id && $(this)[1] == located){
                 contains = true;
@@ -361,12 +361,14 @@ function nboChange(x){
                 image_url.push([id, $(this)[2], $(this)[3]]);
             }
         });
+
         if(contains){
             var scrolldiv = createCarousel(image_url, located, base_dir);
             template += scrolldiv;
         } else {
             template += "<div id='popup-link' class='text-center'><a href='"+base_dir+"/post?q="+located+"' class='text-center'>No Stories For This Tree.</a></div>";
         }
+
         template += tree_info;
 
         // Replace our template values with the actual values from

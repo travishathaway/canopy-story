@@ -106,7 +106,6 @@ class PostController extends Controller
             })->where('flagged', '=', false);
 
         if(count($search_user) > 0){
-            //print_r($search_user); exit();
             $query = $query->orWhereIn('user_id', $search_user);
         }
 
