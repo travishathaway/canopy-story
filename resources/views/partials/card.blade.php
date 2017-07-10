@@ -64,7 +64,7 @@
     <div class="row">
       <div class="col-md-12">
         <strong>Location: </strong>
-        <a class="location-link" href="{{ url('post') }}?location=EASTMORELAND REED">
+        <a class="" href="{{ url('post') }}?q={{ $post->tree_location }}">
           {{ $post->tree_location }}
         </a>
       </div>
@@ -80,7 +80,7 @@
     </div>
     <div class="row">
       <div class="col-md-12">
-        <strong>Posted: </strong>{{ $post->created_at }}
+        <strong>Posted: </strong>{{ $post->created_at->diffForHumans()  }}
       </div>
     </div>
   </div>

@@ -21,4 +21,15 @@ class Post extends Model
     {
         return $this->hasMany('App\Models\PostImage');
     }
+
+    /**
+     * Make sure that tree location names are rendered as
+     * "title" case
+     */
+    public function getTreeLocationAttribute($value)
+    {
+        return implode(array_map(function($value){
+            return ucfirst(strtolower($value));
+        }, explode(' ', $value)), ' ');
+    }
 }

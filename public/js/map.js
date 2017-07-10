@@ -434,7 +434,7 @@ function nboChange(x){
             var scrolldiv = createCarousel(image_url, located, base_dir);
             template += scrolldiv;
         } else {
-            template += "<div id='popup-link' class='text-center'><a href='"+base_dir+"list.php?location="+located+"' class='text-center'>No Stories For This Tree.</a></div>";
+            template += "<div id='popup-link' class='text-center'><a href='"+base_dir+"/post?q="+located+"' class='text-center'>No Stories For This Tree.</a></div>";
         }
         template += tree_info;
         if(logged_in){
@@ -442,11 +442,19 @@ function nboChange(x){
             target = "value=\"";
             var querystring = id + " " + located + ", ";
             var position = popcont.indexOf(target) + target.length;
-            popcont = [popcont.slice(0, position), querystring, popcont.slice(position)].join('');
+            //popcont = [popcont.slice(0, position), querystring, popcont.slice(position)].join('');
         }
 
+        // Replace our template values with the actual values from
+        // the tree data set.
+        popcont_with_vals = popcont.replace(
+            '--tree_location--', located
+        ).replace(
+            '--tree_id--', id
+        );
+
         // Update popup content
-        template += popcont;
+        template += popcont_with_vals;
         layer.bindPopup(template);
 
         jCount= [];

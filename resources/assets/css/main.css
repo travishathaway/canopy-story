@@ -333,7 +333,7 @@ html, body {
     min-height: 100%;
 }
 
-#list-container {
+.list-container {
     margin: 5px auto;
     background: #fff;
     box-shadow: 0 0 10px #666;
@@ -356,7 +356,7 @@ html, body {
     text-decoration: none;
 }
 
-#logout {
+#sign-in-out-link {
     margin-top: -2em;
     margin-right: 5px;
 }

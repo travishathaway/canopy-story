@@ -16,24 +16,23 @@ class PostController extends Controller
     public function create(Request $request)
     {
         $images = $request->get('image-filepath');
-        $data = $request->data;
+
         $treestory = $request->input('treestory');
+        $tree_location = $request->input('tree_location');
+        $tree_id = $request->input('tree_id'); 
 
         // Check required fields
-        if(empty($data) || empty($treestory)){
-            return abort(400, 'Required fields "data" and "treestory" not present');
+        if(empty($tree_id) || empty($tree_location) || empty($treestory)){
+          return abort(400, 'Required fields "tree_id", "tree_location" and 
+            "treestory" not present');
         }
 
-        // Parse out tree information
-        $this_tree = explode(', ', $data, 2)[0];
-        $tree_id = explode(' ', $this_tree, 2)[0];
-        $tree_location = explode(' ', $this_tree, 2)[1];
 
         // Create the post
         $post = new Post;
-        $post->content = $request->input('treestory');
+        $post->content = $treestory;
         $post->tree_id = $tree_id;
-        $post->tree_location = $tree_location;
+        $post->tree_location = str_replace(',', '', $tree_location);
         $post->user_id = $request->user()->id;
         $post->flagged = false;
         $post->save();
@@ -90,20 +89,27 @@ class PostController extends Controller
         return redirect('post');
     }
 
+    /**
+     * Retrieves a list of posts for our list template
+     */
     public function get(Request $request)
     {
-      $query = Post::with('images')/**->with(['user' => function($q) use ($request){
-          if($request->q){
-              $q->orWhere('last_name', 'like', $request->q)
-                ->orWhere('first_name', 'like', $request->q);
-          }
-      }])*/->where(function($query) use ($request){
-          if($request->q){
-              $query->where('content', 'like', $request->q)
-                  ->orWhere('tree_location', 'like', $request->q)
-                  ->orWhere('posts.created_at', 'like', $request->q);
-          }
-      })->where('flagged', '=', false);
+        $search_user = User::where('first_name', 'like', "%$request->q%")
+            ->orWhere('last_name', 'like', "%$request->q%")->pluck('id')->all();
+
+        $query = Post::with('images')->with('user')->
+            where(function($query) use ($request){
+                if($request->q){
+                    $query->orWhere('content', 'like', "%$request->q%")
+                        ->orWhere('tree_location', 'like', "%$request->q%");
+                }
+            })->where('flagged', '=', false);
+
+        if(count($search_user) > 0){
+            //print_r($search_user); exit();
+            $query = $query->orWhereIn('user_id', $search_user);
+        }
+
         $posts = $query->paginate(20);
         $user = $request->user();
 
@@ -113,7 +119,8 @@ class PostController extends Controller
 
         return view('posts.list', [
             'posts' => $posts,
-            'user' => $user
+            'user' => $user,
+            'q' => $request->q
         ]);
     }
 }

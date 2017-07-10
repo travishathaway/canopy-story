@@ -1,14 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-<div id="list-container" class="container">
+<div class="list-container container">
     <div class="row" id="list_header">
         @if(Auth::check())
-        <a href="/logout" id="logout" class="btn btn-default pull-right">Logout</a>
+        <a href="/logout" id="sign-in-out-link" class="btn btn-default pull-right">Logout</a>
         @else
-        <a href="/login" id="login" class="btn btn-default pull-right">Login</a>
+        <a href="/login" id="sign-in-out-link" class="btn btn-default pull-right">Login</a>
         @endif
-        <?php /*echo $admin_button.$logout; */ ?>
         <div class="col-md-12 text-center"><h1><a id="title-link" href="/">{{ config('app.name') }}</a></h1><p/>
         <h4>What&rsquo;s new in your neck of the woods?</h4></div>
     </div>
@@ -17,7 +16,8 @@
             <form action="" method="get">
                 <div class="row">
                     <div class="col-md-offset-1 col-md-8">
-                        <input type="text" class="form-control" name="q" placeholder="Seach for a Tree Story">
+                        <input type="text" class="form-control" name="q" placeholder="Seach for a Tree Story"
+                            value="{{ $q }}"/>
                     </div>
                     <div class="col-md-3">
                         <div class="btn-group pull-right" id="search-buttons">
@@ -30,20 +30,28 @@
             </form>
         </div>
     </div>
-    <div class="row" id="table-info"><div class="col-md-12">
-    </div></div>
+    <div class="row" id="table-info"><div class="col-md-12"></div></div>
 </div>
+@if($posts->count() > 0)
 <div class="container-fluid">
   <div id="cards-container">
-  @foreach ($posts as $post)
-    @include('partials.card')
-    @endforeach
+      @foreach ($posts as $post)
+        @include('partials.card')
+      @endforeach
   </div>
-
   <div class="text-center">
-    {{ $posts->links() }}
+    {{ $posts->appends(['q' => $q])->links() }}
   </div>
 </div>
+@else
+<div class="list-container container">
+    <div class="text-center">
+      <h3>No Results</h3>
+      <p>Please try searching for other terms</p>
+      <br />
+    </div>
+</div>
+@endif
 @endsection
 
 @section('script')
