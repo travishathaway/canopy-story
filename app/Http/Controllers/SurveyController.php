@@ -85,7 +85,7 @@ class SurveyController extends Controller
                     foreach($this->survey_fields as $field){
                         $user->$field = $input[$field] ? $input[$field] : null;
                     }
-                } elseif(!empty($input['no_participate'])) {
+                } else {
                     $user->survey_status = 'no participate';
                 }
 
