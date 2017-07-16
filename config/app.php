@@ -188,10 +188,10 @@ return [
         Folklore\Image\ImageServiceProvider::class,
 
         /**
-         * Minify <https://github.com/DevFactoryCH/minify>
+         * Form elements and other HTML things
+         * https://laravelcollective.com/docs/5.2/html
          */
-        Devfactory\Minify\MinifyServiceProvider::class,
-
+        Collective\Html\HtmlServiceProvider::class
     ],
 
     /*
@@ -243,6 +243,8 @@ return [
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Image' => Folklore\Image\Facades\Image::class,
         'Minify' => Devfactory\Minify\Facades\MinifyFacade::class,
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
     ],
 
 ];

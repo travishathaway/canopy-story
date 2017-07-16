@@ -98,3 +98,14 @@ Route::get('/post', [
   'as' => 'post', 
   'uses' => 'PostController@get'
 ]);
+
+Route::get('/survey', [
+  'as' => 'survey',
+  'uses' => 'SurveyController@get'
+])->middleware('auth');
+
+
+Route::post('/survey', [
+  'as' => 'survey.create',
+  'uses' => 'SurveyController@create'
+])->middleware('auth');

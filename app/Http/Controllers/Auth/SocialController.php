@@ -96,14 +96,15 @@ class SocialController extends Controller
             }
         }
         auth()->login($socialUser, true);
-        if ( auth()->user()->hasRole('user')) {
-            return redirect()->route('index');
+
+        if(auth()->user()){
+            if(auth()->user()->survey_status == null) {
+                return redirect()->route('survey');
+            } else {
+                return redirect()->route('index');
+            }
         }
 
-        // Keeping in case we want to change this in the future
-        if ( auth()->user()->hasRole('administrator')) {
-            return redirect()->route('index');
-        }
         return abort(500, 'User has no Role assigned, role is obligatory! You did not seed the database with the roles.');
     }
 }
