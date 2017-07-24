@@ -41,7 +41,7 @@ class SurveyTest extends TestCase
         $user = factory(User::class)->create();
 
         $response = $this->actingAs($user)->post('/survey', [
-            'year_born' => 1906,
+            'age_range' => 'under_18',
             'id' => $user->id,
         ]);
 
@@ -51,7 +51,7 @@ class SurveyTest extends TestCase
 
         $user = User::find($user->id);
         $this->assertEquals('no participate', $user->survey_status);
-        $this->assertEquals(null, $user->year_born);
+        $this->assertEquals(null, $user->age_range);
         $this->assertEquals(null, $user->gender);
         $this->assertEquals(null, $user->race_ethnicity);
         $this->assertEquals(null, $user->home_zip_code);
@@ -69,7 +69,7 @@ class SurveyTest extends TestCase
         $user = factory(User::class)->create();
 
         $response = $this->actingAs($user)->post('/survey', [
-            'year_born' => 1906,
+            'age_range' => '18_24',
             'gender' => 'male',
             'race_ethnicity' => 'white',
             'home_zip_code' => '12345',
@@ -84,7 +84,7 @@ class SurveyTest extends TestCase
 
         $user = User::find($user->id);
         $this->assertEquals('complete', $user->survey_status);
-        $this->assertEquals(1906, $user->year_born);
+        $this->assertEquals('18_24', $user->age_range);
         $this->assertEquals('male', $user->gender);
         $this->assertEquals('white', $user->race_ethnicity);
         $this->assertEquals('12345', $user->home_zip_code);
@@ -102,7 +102,7 @@ class SurveyTest extends TestCase
         $user = factory(User::class)->create();
 
         $response = $this->actingAs($user)->post('/survey', [
-            'year_born' => 1906,
+            'age_range' => '75_84',
             'gender' => '',
             'race_ethnicity' => 'white',
             'home_zip_code' => '',
@@ -117,7 +117,7 @@ class SurveyTest extends TestCase
 
         $user = User::find($user->id);
         $this->assertEquals('complete', $user->survey_status);
-        $this->assertEquals(1906, $user->year_born);
+        $this->assertEquals('75_84', $user->age_range);
         $this->assertEquals(null, $user->gender);
         $this->assertEquals('white', $user->race_ethnicity);
         $this->assertEquals(null, $user->home_zip_code);

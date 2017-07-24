@@ -51,8 +51,8 @@ $(document).ready(function(){
                 {{ Form::hidden('id', $user['id'])}}
 
                 <div class="form-group">
-                  {{ Form::label('year_born', 'What year were you born?')}}
-                  {{ Form::select('year_born', $year_born_choices, null,  ['class' => 'form-control']) }}
+                  {{ Form::label('age_range', 'How old are you?')}}
+                  {{ Form::select('age_range', $age_range_choices, null,  ['class' => 'form-control']) }}
                 </div>
 
                 <div class="form-group">

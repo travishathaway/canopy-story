@@ -8,7 +8,7 @@ use App\Models\User;
 class SurveyController extends Controller
 {
     public $survey_fields = array(
-        'year_born',
+        'age_range',
         'gender',
         'race_ethnicity',
         'home_zip_code',
@@ -20,11 +20,18 @@ class SurveyController extends Controller
      */
     public function get(Request $request)
     {
-        $year_born_choices = array_reverse(range(1917, 2016));
-        # This is how we add a default empty value
-        array_unshift($year_born_choices, '');
-        # This makes the array index the same as the value
-        $year_born_choices = array_combine($year_born_choices, $year_born_choices);
+        $age_range_choices = [
+            '' => '',
+            'under_18' => 'Under 18',
+            '18_24' => '18 - 24',
+            '25_34' => '25 - 34',
+            '35_44' => '35 - 44',
+            '45_54' => '45 - 54',
+            '55_64' => '55 - 64',
+            '65_74' => '65 - 74',
+            '75_84' => '75 - 84',
+            '85_or_older' => '85 or older'
+        ];
 
         $gender_choices = [
             '' => '',
@@ -67,7 +74,7 @@ class SurveyController extends Controller
 
 
         return view('survey.create', [
-            'year_born_choices' => $year_born_choices,
+            'age_range_choices' => $age_range_choices,
             'gender_choices' => $gender_choices,
             'race_ethnicity_choices' => $race_ethnicity_choices,
             'education_choices' => $education_choices,
