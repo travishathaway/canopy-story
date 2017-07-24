@@ -11,8 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
+Route::get('/', function() {
+    $has_visited = Cookie::get('has_visited');
+
+    if(!$has_visited) {
+        Cookie::queue(Cookie::forever('has_visited', true));
+    }
+
+    return view('index', [
+        'has_visited' => $has_visited
+    ]);
 })->name('index');
 
 // OAuth Routes
@@ -28,8 +36,7 @@ Route::get('social/handle/{provider}', [
   'uses' => 'Auth\SocialController@getSocialHandle'
 ]);
 
-Route::group(['middleware' => 'auth:all'], function()
-{
+Route::group(['middleware' => 'auth:all'], function() {
     $a = 'authenticated.';
     Route::get('/logout', ['as' => $a . 'logout', 'uses' => 'Auth\LoginController@logout']);
     Route::get('/activate/{token}', ['as' => $a . 'activate', 'uses' => 'ActivateController@activate']);
@@ -41,7 +48,7 @@ Route::group(['middleware' => 'auth:all'], function()
 
 Auth::routes(['login' => 'auth.login']);
 
-Route::get('/logout', function(){
+Route::get('/logout', function() {
     Auth::logout();
     return redirect('/');
 });

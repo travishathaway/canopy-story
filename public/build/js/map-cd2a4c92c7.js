@@ -263,7 +263,6 @@ function zoomToFeature(e) {
     } else {
         setTimeout(loadingGIF(),1)
         if(map.getZoom() >17){
-            //console.log(map.getZoom())
         } else{
             map.fitBounds(e.target.getBounds());
         }
@@ -359,7 +358,15 @@ function getPopupContent(){
                 type: 'get',
                 async: true,
                 success: function(html){
-                    popcont = html;
+                    popcont = '<br>';
+                    popcont = '<p>To share your story, please sign in using:</p>'
+                    popcont += html;
+                    popcont += "<p>If you do not want to sign in, you can also send us an email.</p>";
+                    popcont += '<a class="btn btn-default btn-large" style="width: 188px" title="Share via email" href="mailto:'+share_email+'?'+
+                        'subject=Canopy Story for tree --tree_id-- at --tree_location--&'+
+                        'body=Hello, %0D%0A%0D%0AI would like to share my Canopy Story%0D%0A%0D%0A ---Write below this line---%0D%0A%0D%0A">'+
+                        '<span class="glyphicon glyphicon-envelope"></span> Share via email'+
+                    '</a>';
                 }
             });
         }
@@ -422,7 +429,8 @@ function nboChange(x){
 
         var contains = false;
         var story_count = 0;
-      var image_url = [];
+        var image_url = [];
+
         $(updated_trees).each(function(){
             if($(this)[0] == id && $(this)[1] == located){
                 contains = true;
@@ -430,20 +438,15 @@ function nboChange(x){
                 image_url.push([id, $(this)[2], $(this)[3]]);
             }
         });
+
         if(contains){
             var scrolldiv = createCarousel(image_url, located, base_dir);
             template += scrolldiv;
         } else {
-            template += "<div id='popup-link' class='text-center'><a href='"+base_dir+"/post?q="+located+"' class='text-center'>No Stories For This Tree.</a></div>";
+            template += "<div id='popup-link' class='text-center'><a href='"+base_dir+"/post?q="+located+"' class='text-center'>Find stories in this area.</a></div>";
         }
+
         template += tree_info;
-        if(logged_in){
-            // Make sure the tree id gets passed to the update script
-            target = "value=\"";
-            var querystring = id + " " + located + ", ";
-            var position = popcont.indexOf(target) + target.length;
-            //popcont = [popcont.slice(0, position), querystring, popcont.slice(position)].join('');
-        }
 
         // Replace our template values with the actual values from
         // the tree data set.

@@ -30,32 +30,39 @@ class SurveyController extends Controller
             '' => '',
             'male' => 'Male',
             'female' => 'Female',
-            'non_binary' => 'Non-binary/Third Gender',
-            'not_disclosed' => 'Prefer not to say'
+            'trans_male' => 'Trans Male',
+            'trans_female' => 'Trans Female',
+            'genderqueer_androgynous' => 'Genderqueer/Androgynous',
+            'other' => 'Other'
         ];
 
         $race_ethnicity_choices = [
             '' => '',
             'white' => 'White',
-            'black or african america' => 'Black or African American',
-            'american indian and alaska native' => 'American Indian and Alaska Native',
-            'asian' => 'Asian',
-            'arab' => 'Arabic',
-            'hispanic latino' => 'Hispanic/Latino',
-            'native hawaiian or pacific islander' => 'Native Hawaiian or Pacific Islander',
+            'black_or_african america' => 'Black or African American',
+            'alaska_native' => 'Alaska Native',
+            'american_indian_native_american' => 'American Indian/Native American',
+            'south_asian' => 'South Asian',
+            'east_asian' => 'East Asian',
+            'southeast_asian' => 'South East Asian',
+            'west_asian' => 'West Asian',
+            'middle_eastern' => 'Middle Eastern',
+            'african' => 'African',
+            'native_hawaiian_or_pacific_islander' => 'Native Hawaiian or Pacific Islander',
+            'hispanic_latino' => 'Hispanic/Latino',
+            'slavic_or_eastern_european' => 'Slavic or Eastern European',
+            'white' => 'White',
+            'black_or_african_american' => 'Black or African American',
             'other' => 'Other',
-            'two or more' => 'Two or More'
         ];
 
         $education_choices = [
             '' => '',
-            'high school' => 'High School/GED',
-            'vocational training' => 'Vocational Training',
-            'associates' => 'Associates',
-            'bachelors' => 'Bachelors',
-            'masters' => 'Masters',
-            'doctorate' => 'Doctorate',
-            'none' => 'None',
+            'less_than_high_school' => 'Less Than High School',
+            'high_school' => 'High School',
+            'some_college' => 'Some College',
+            'bachelors_degree' => "Bachelor's Degree",
+            'graduate_or_professional_degree' => "Graduate and/or Professional Degree",
         ];
 
 

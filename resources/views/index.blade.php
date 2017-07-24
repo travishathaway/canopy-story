@@ -44,16 +44,23 @@
 @section('scripts')
 @parent
 <script>
-var base_dir = '{{ config('app.url')}}';
+var base_dir = '{{ config('app.url') }}';
+var share_email = '{{ config('app.share_email') }}'
 @if(Auth::check())
-var logged_in = true;
+  var logged_in = true;
 @else
   var logged_in = false;
 @endif
 
+@if($has_visited)
+  var has_visited = true;
+@else
+  var has_visited = false;
+@endif
+
 function checkLogin(){
     try{
-        if(logged_in !== true){
+        if(has_visited === false){
           $('#tutorial-modal').modal('show');
         } else {
           $('#legend').css({'visibility': 'visible'});

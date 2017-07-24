@@ -10,6 +10,9 @@
       </a>
     @endif
       <a class="btn btn-default btn-xs" href="{{ url('post') }}"><span class="glyphicon glyphicon-list"></span> See All Posts</a>
+      <a class="btn btn-default btn-xs" href="#" type="button" id="show-help-modal">
+        <span class="glyphicon glyphicon-question-sign"></span> Help
+        </a>
       <span class="glyphicon glyphicon-collapse-down pull-right" title="Hide Legend" id="hide"></span>
     </p>
     <div class="row heading">
@@ -65,6 +68,10 @@ $("#hide").click(function(){
             hidden = true;
         });
     }
+});
+
+$('#show-help-modal').on('click', function(){
+    $('#tutorial-modal').modal('show');
 });
 </script>
 @endsection

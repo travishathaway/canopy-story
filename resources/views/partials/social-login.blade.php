@@ -4,4 +4,3 @@
 <a href="{{ route('social.redirect', ['provider' => 'facebook']) }}" class="login">
     <img src="{{ asset('build/images/facebook-button.png') }}">
 </a>
-

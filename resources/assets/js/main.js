@@ -289,7 +289,15 @@ function getPopupContent(){
                 type: 'get',
                 async: true,
                 success: function(html){
-                    popcont = html;
+                    popcont = '<br>';
+                    popcont = '<p>To share your story, please sign in using:</p>'
+                    popcont += html;
+                    popcont += "<p>If you do not want to sign in, you can also send us an email.</p>";
+                    popcont += '<a class="btn btn-default btn-large" style="width: 188px" title="Share via email" href="mailto:'+share_email+'?'+
+                        'subject=Canopy Story for tree --tree_id-- at --tree_location--&'+
+                        'body=Hello, %0D%0A%0D%0AI would like to share my Canopy Story%0D%0A%0D%0A ---Write below this line---%0D%0A%0D%0A">'+
+                        '<span class="glyphicon glyphicon-envelope"></span> Share via email'+
+                    '</a>';
                 }
             });
         }
@@ -366,7 +374,7 @@ function nboChange(x){
             var scrolldiv = createCarousel(image_url, located, base_dir);
             template += scrolldiv;
         } else {
-            template += "<div id='popup-link' class='text-center'><a href='"+base_dir+"/post?q="+located+"' class='text-center'>No Stories For This Tree.</a></div>";
+            template += "<div id='popup-link' class='text-center'><a href='"+base_dir+"/post?q="+located+"' class='text-center'>Find stories in this area.</a></div>";
         }
 
         template += tree_info;

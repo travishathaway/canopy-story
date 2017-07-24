@@ -16,10 +16,6 @@ Login
         </div>
       </div>
     </div>
-    <hr>
-    <a id="back" href="{{ url('post') }}" class="btn btn-danger">
-      I Don't Want To Sign In
-    </a>
   </div>
 </div>
 @endsection

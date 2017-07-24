@@ -3,13 +3,13 @@
         <div class="form-group">
             <input type="hidden" name="tree_location" value="--tree_location--" />
             <input type="hidden" name="tree_id" value="--tree_id--" />
-            <textarea rows="4" cols="30" class="form-control" name="treestory" id="textbox" placeholder="Whats Your Tree Story?"></textarea>
+            <textarea rows="4" cols="30" class="form-control" name="treestory" id="textbox" placeholder="What's Your Tree Story?"></textarea>
         </div>
     </form>
     <input name='file' type="file" id="file" style="display:none" />
     <div id="dropbox" class="alert alert-default">
         <div class="text-center">
-          <strong>Got a picture of that tree? 
+          <strong>Do you have a picture of this tree? 
             <br/> Click here <em>or</em> drop it in this area to upload it.
           </strong>
         </div>
