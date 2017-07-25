@@ -34,7 +34,7 @@
     @endif
     <div class="row">
       <div class="col-md-9">
-        <strong>By: </strong>{{ $post->user->first_name}}  {{ $post->user->last_name}}
+        <strong>By: </strong>{{ $post->user->first_name}}  {{ strtoupper(substr($post->user->last_name, 0, 1)) . '.'}}
       </div>
       <div class="col-md-3">
         @if($user) 
