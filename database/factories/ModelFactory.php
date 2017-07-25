@@ -23,3 +23,12 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'token' => str_random(10),
     ];
 });
+
+$factory->define(App\Models\Post::class, function (Faker\Generator $faker) {
+    return [
+        'tree_location' => $faker->name,
+        'tree_id' => $faker->randomNumber,
+        'content' => $faker->text,
+        'language' => $faker->randomNumber % 2 == 0 ? 'en' : 'es'
+    ];
+});

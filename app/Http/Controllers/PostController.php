@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use LanguageDetection\Language;
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -11,7 +13,34 @@ use App\Models\PostImage;
 class PostController extends Controller
 {
     /**
+     * Languages we support for language detection
+     */
+    const LANGUAGES = ['en', 'es'];
+
+    /**
+     * Provided text, the best fit language in $this->languages
      *
+     * @param $test string
+     *
+     * @return string
+     */
+    public static function getLanguage($text)
+    {
+        $ld = new Language;
+        # Returns an array with languages as keys and scores as values
+        $result = $ld->detect($text)->close();
+
+        # Filter out only the ones we care about
+        $lang_scores = array_filter(array_keys($result), function($i){
+            return in_array($i, PostController::LANGUAGES);
+        });
+
+        # Return the first one (the array was sorted in the first step)
+        return array_shift($lang_scores);
+    }
+
+    /**
+     * This is the endpoint for creating a new post
      */
     public function create(Request $request)
     {
@@ -27,11 +56,11 @@ class PostController extends Controller
             "treestory" not present');
         }
 
-
         // Create the post
         $post = new Post;
         $post->content = $treestory;
         $post->tree_id = $tree_id;
+        $post->language = $this->getLanguage($treestory);
         $post->tree_location = str_replace(',', '', $tree_location);
         $post->user_id = $request->user()->id;
         $post->flagged = false;
@@ -50,6 +79,9 @@ class PostController extends Controller
         return redirect('post');
     }
 
+    /**
+     * This is the endpoint for updating a post
+     */
     public function update(Request $request, $id)
     {
         $post = Post::find($id);
@@ -72,6 +104,9 @@ class PostController extends Controller
         return redirect('post');
     }
 
+    /**
+     * This is the endpoint for deleting a post
+     */
     public function delete(Request $request, $id)
     {
         $post = Post::find($id);

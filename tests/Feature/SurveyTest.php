@@ -11,6 +11,8 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class SurveyTest extends TestCase
 {
+    use DatabaseTransactions;
+
     /**
      * Test to make sure this page is login protected
      *
