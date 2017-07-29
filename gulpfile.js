@@ -12,6 +12,7 @@ elixir(mix => {
     // Combine CSS
     mix.styles([
         'main.css',
+        'languages.min.css',
         'map/leaflet-geojson-selector.css',
         'map/MarkerCluster.css',
         'map/MarkerCluster.Default.css',

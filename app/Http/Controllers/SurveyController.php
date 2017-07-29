@@ -20,6 +20,20 @@ class SurveyController extends Controller
      */
     public function get(Request $request)
     {
+        $lang = $request->input('lang');
+
+        $supported_langs = array(
+          'es' => 'Español', 
+          'en' => 'English'
+        );
+
+        if( 
+          $lang !== \App::getLocale() and 
+          in_array(strtolower($lang), array_keys($supported_langs))
+        ) {
+            \App::setLocale($lang);
+        }
+
         $age_range_choices = [
             '' => '',
             'under_18' => 'Under 18',
@@ -78,7 +92,8 @@ class SurveyController extends Controller
             'gender_choices' => $gender_choices,
             'race_ethnicity_choices' => $race_ethnicity_choices,
             'education_choices' => $education_choices,
-            'user' => $request->user()
+            'user' => $request->user(),
+            'languages' => $supported_langs
         ]);
     }
 
