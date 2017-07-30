@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 class Post extends Model
 {
@@ -31,5 +32,35 @@ class Post extends Model
         return implode(array_map(function($value){
             return ucfirst(strtolower($value));
         }, explode(' ', $value)), ' ');
+    }
+
+    /**
+     * Static method for retrieving list of posts
+     *
+     * @param $request Request
+     * @param $search_user array, list of user ids
+     * @param $locale string, language locale
+     *
+     * @return $query QueryBuilder
+     */
+    public static function getPostList(
+      Request $request, array $search_user, $locale
+    )
+    {
+        $query = self::with('images')->with('user')
+            ->where(function($query) use ($request){
+                if($request->q){
+                    $query = $query->orWhere('content', 'like', "%$request->q%")
+                        ->orWhere('tree_location', 'like', "%$request->q%");
+                }
+            });
+
+        if(count($search_user) > 0){
+            $query = $query->orWhereIn('user_id', $search_user);
+        }
+
+        $query = $query->where('language', '=', $locale);
+
+        return $query;
     }
 }

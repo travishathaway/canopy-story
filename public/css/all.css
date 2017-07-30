@@ -150,8 +150,13 @@ html, body {
     margin: 0 0 0 0;
 }
 
-#list_header {
-    padding: 20px 0;
+#profile-buttons {
+    padding-right: 10px;
+}
+
+#profile-buttons .btn {
+    height: 30px;
+    margin-left: 5px;
 }
 
 #nbo_toggle{

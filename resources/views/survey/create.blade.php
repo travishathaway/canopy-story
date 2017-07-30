@@ -7,10 +7,6 @@ $(document).ready(function(){
     $('#take-survey').hide();
     $('#survey').removeClass('hidden');
   });
-
-  $('#language-choice').on('click', function(){
-    window.location = '?lang='+$(this).data('value');
-  });
 });
 </script>
 @stop
@@ -21,13 +17,15 @@ $(document).ready(function(){
         <div class="col-md-offset-3 col-md-6">
             <div class="pull-right">
                   @if(\App::getLocale() === 'en')
-                    <button type="button" class="btn btn-default btn-sm" id="language-choice" data-value="es">
+                    <a href="?lang=es" type="button" 
+                      class="btn btn-default btn-sm" id="language-choice">
                       <span class="text-muted"><span class="lang-sm lang-lbl" lang="es"></span></span>
-                    </button>
+                    </a>
                   @else
-                    <button type="button" class="btn btn-default btn-sm" id="language-choice" data-value="en"> 
+                    <a href="?lang=en" type="button" 
+                      class="btn btn-default btn-sm" id="language-choice">
                       <span class="text-muted"><span class="lang-sm lang-lbl" lang="en"></span></span>
-                    </button>
+                    </a>
                   @endif
             </div>
             <h1>@lang('survey.title')</h1>

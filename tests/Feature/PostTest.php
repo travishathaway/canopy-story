@@ -9,6 +9,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Http\Request;
 
 class PostTest extends TestCase
 {
@@ -86,5 +87,47 @@ class PostTest extends TestCase
         $this->assertEquals('54', $post->tree_id);
         $this->assertEquals($story_text, $post->content);
         $this->assertEquals('es', $post->language);
+    }
+
+    /**
+     * Create a spanish and english post and make sure that we only
+     * get results back from post with just english or just spanish
+     */
+    public function testEnglishAndSpanishPostList()
+    {
+        $user = factory(User::class)->create();
+
+        # Create the posts
+        $story_text = 'prácticas para proteger a los consumidores.';
+        $response = $this->actingAs($user)->post('/post', [
+            'tree_location' => 'REED',
+            'tree_id' => '54',
+            'treestory' => $story_text
+        ]);
+
+        $story_text = 'Hey, this is a post in English';
+        $response = $this->actingAs($user)->post('/post', [
+            'tree_location' => 'REED',
+            'tree_id' => '54',
+            'treestory' => $story_text
+        ]);
+
+        # Mock a request object
+        $request = new Request();
+        $users = array();
+
+        # List english
+        $posts = Post::getPostList($request, $users, 'en')->get();
+
+        # Make sure we just get the first english post back
+        $this->assertEquals(1, count($posts));
+        $this->assertEquals('en', $posts[0]->language);
+
+        # List spanish
+        $posts = Post::getPostList($request, $users, 'es')->get();
+
+        # Make sure we just get the first spanish post back
+        $this->assertEquals(1, count($posts));
+        $this->assertEquals('es', $posts[0]->language);
     }
 }

@@ -13,11 +13,6 @@ use App\Models\PostImage;
 class PostController extends Controller
 {
     /**
-     * Languages we support for language detection
-     */
-    const LANGUAGES = ['en', 'es'];
-
-    /**
      * Provided text, the best fit language in $this->languages
      *
      * @param $test string
@@ -32,7 +27,7 @@ class PostController extends Controller
 
         # Filter out only the ones we care about
         $lang_scores = array_filter(array_keys($result), function($i){
-            return in_array($i, PostController::LANGUAGES);
+            return in_array($i, config('app.available_locales'));
         });
 
         # Return the first one (the array was sorted in the first step)
@@ -132,17 +127,7 @@ class PostController extends Controller
         $search_user = User::where('first_name', 'like', "%$request->q%")
             ->orWhere('last_name', 'like', "%$request->q%")->pluck('id')->all();
 
-        $query = Post::with('images')->with('user')->
-            where(function($query) use ($request){
-                if($request->q){
-                    $query->orWhere('content', 'like', "%$request->q%")
-                        ->orWhere('tree_location', 'like', "%$request->q%");
-                }
-            })->where('flagged', '=', false);
-
-        if(count($search_user) > 0){
-            $query = $query->orWhereIn('user_id', $search_user);
-        }
+        $query = Post::getPostList($request, $search_user, \App::getLocale());
 
         $posts = $query->paginate(20);
         $user = $request->user();

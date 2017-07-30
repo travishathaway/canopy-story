@@ -3,11 +3,22 @@
 @section('content')
 <div class="list-container container">
     <div class="row" id="list_header">
-        @if(Auth::check())
-        <a href="/logout" id="sign-in-out-link" class="btn btn-default pull-right">Logout</a>
+        <div class="pull-right" id="profile-buttons">
+        @if(\App::getLocale() === 'en')
+        <a href="?lang=es" class="btn btn-default btn-sm">
+          <span class="text-muted"><span class="lang-sm lang-lbl" lang="es"></span></span>
+        </a>
         @else
-        <a href="/login" id="sign-in-out-link" class="btn btn-default pull-right">Login</a>
+        <a href="?lang=en" class="btn btn-default btn-sm">
+          <span class="text-muted"><span class="lang-sm lang-lbl" lang="en"></span></span>
+        </a>
         @endif
+        @if(Auth::check())
+        <a href="/logout" class="btn btn-sm btn-default pull-right">Logout</a>
+        @else
+        <a href="/login" class="btn btn-sm btn-default pull-right">Login</a>
+        @endif
+        </div>
         <div class="col-md-12 text-center"><h1><a id="title-link" href="/">{{ config('app.name') }}</a></h1><p/>
         <h4>What&rsquo;s new in your neck of the woods?</h4></div>
     </div>
