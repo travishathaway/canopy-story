@@ -1,5 +1,5 @@
-<div class="card" style="margin-top: 14px;">
-  <div class="container container-fluid image-container">
+<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 image-container">
+  <div class="card">
     @if(count(($post->images)) > 0 )
     <div class="row">
       <div class="col-md-12 ">
@@ -29,6 +29,7 @@
           </div>
           @endif
         </div>
+        <hr />
       </div>
     </div>
     @endif
@@ -69,13 +70,36 @@
         </a>
       </div>
     </div>
+    <br />
     <div class="row">
       <div class="col-md-12">
-        <div class="well">
-          <p>
-            {{ $post->content }}
-          </p>
+        <blockquote class="">
+        {{ str_limit($post->content, 250) }}
+        @if(strlen($post->content) > 250)
+        <div class="text-right">
+          <a href="#" title="Read More" data-toggle="modal" data-target="#post-detail-modal-{{$loop->iteration}}">
+            Read More...
+          </a>
         </div>
+        <div class="modal fade" id="post-detail-modal-{{$loop->iteration}}" tabindex="-1" 
+            role="dialog" aria-labelledby="postModalDetail">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  Canopy story at <strong>{{ $post->tree_location }}</strong> by
+                  <strong>
+                    {{ $post->user->first_name}} {{ strtoupper(substr($post->user->last_name, 0, 1)) . '.'}}
+                  </strong>
+              </div>
+              <div class="modal-body">
+                {!! nl2br(e($post->content)) !!}
+              </div>
+            </div>
+          </div>
+        </div>
+        @endif
+        </blockquote>
       </div>
     </div>
     <div class="row">
