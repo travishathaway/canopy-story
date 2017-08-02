@@ -115,7 +115,8 @@ class PostController extends Controller
             return abort(403, "You are not authorized to perform this action");
         }
 
-        $post->delete();
+        $post->deleted_at = new \DateTime();
+        $post->save();
         return redirect('post');
     }
 

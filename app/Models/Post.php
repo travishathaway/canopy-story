@@ -59,8 +59,9 @@ class Post extends Model
             $query = $query->orWhereIn('user_id', $search_user);
         }
 
-        $query = $query->where('language', '=', $locale);
+        $query = $query->where('language', '=', $locale)
+            ->where('deleted_at', '=', null);
 
-        return $query;
+        return $query->orderBy('created_at', 'desc');
     }
 }
