@@ -58,6 +58,7 @@ var share_email = '{{ config('app.share_email') }}'
   var has_visited = false;
 @endif
 
+  var upload_file_location = '{{ elixir('js/upload.js') }}';
 function checkLogin(){
     try{
         if(has_visited === false){

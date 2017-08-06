@@ -34,10 +34,14 @@ elixir(mix => {
         'popup.js', 
         'main.js',
         '../bower/resumable.js/resumable.js'
-    ], 'public/js/map.js')
+    ], 'public/js/map.js');
+
+    mix.scripts([
+        'upload.js'
+    ], 'public/js/upload.js');
 
     // Version compiled assets
-    mix.version(['css/all.css', 'js/all.js', 'js/map.js']);
+    mix.version(['css/all.css', 'js/all.js', 'js/map.js', 'js/upload.js']);
 
     // Copy over images and fonts
     mix.copy('resources/assets/bower/leaflet/dist/images', 'public/build/images');
