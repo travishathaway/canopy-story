@@ -1,6 +1,8 @@
 {
   "css/all.css": "css/all-9cc03268ba.css",
+  "css/reveal.css": "css/reveal-a9b5a517a4.css",
   "js/all.js": "js/all-90c9aba97e.js",
   "js/map.js": "js/map-4f5d41bf2b.js",
+  "js/reveal.js": "js/reveal-40d0b18582.js",
   "js/upload.js": "js/upload-ddce252808.js"
 }

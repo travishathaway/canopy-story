@@ -19,7 +19,12 @@ elixir(mix => {
         '../bower/bootstrap/dist/css/bootstrap.min.css',
         '../bower/leaflet/dist/leaflet.css',
         '../bower/fancybox/dist/jquery.fancybox.min.css',
-    ])
+    ]);
+
+    mix.styles([
+        'reveal.css',
+        'reveal-black.css'
+    ], 'public/css/reveal.css');
 
     // Combine JS
     mix.scripts([
@@ -40,8 +45,20 @@ elixir(mix => {
         'upload.js'
     ], 'public/js/upload.js');
 
+    mix.scripts([
+        'reveal.js',
+        'head.min.js'
+    ], 'public/js/reveal.js');
+
     // Version compiled assets
-    mix.version(['css/all.css', 'js/all.js', 'js/map.js', 'js/upload.js']);
+    mix.version([
+        'css/all.css', 
+        'css/reveal.css', 
+        'js/all.js', 
+        'js/map.js', 
+        'js/upload.js',
+        'js/reveal.js'
+    ]);
 
     // Copy over images and fonts
     mix.copy('resources/assets/bower/leaflet/dist/images', 'public/build/images');

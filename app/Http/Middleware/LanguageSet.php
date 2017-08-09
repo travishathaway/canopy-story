@@ -16,14 +16,19 @@ class LanguageSet
      */
     public function handle($request, Closure $next)
     {
-        // Check for $_GET param of lang to set language, fall back to English
-        $lang = $request->input('lang');
+        // If we've passed in a language once, remember it in the cookie
+        if( $request->input('lang') ){
+            $lang = $request->input('lang');
 
-        if( 
-          $lang !== \App::getLocale() and 
-          in_array(strtolower($lang), config('app.available_locales'))
-        ) {
-            \App::setLocale($lang);
+            if( 
+              $lang !== \App::getLocale() and 
+              in_array(strtolower($lang), config('app.available_locales'))
+            ) {
+                \App::setLocale($lang);
+            }
+
+            // TODO: Add a mechanism to remember the lanuage choice on a user
+            // session
         }
 
         return $next($request);

@@ -23,6 +23,14 @@ Route::get('/', function() {
     ]);
 })->name('index');
 
+Route::get('/help', function() {
+    if( \App::getLocale() === 'en' ){
+        return view('pages.help-en');
+    } elseif( \App::getLocale() === 'es' ){
+        return view('pages.help-es');
+    }
+})->name('help');
+
 // OAuth Routes
 $s = 'social.';
 
