@@ -31,7 +31,7 @@
           <div class="modal-footer-center">
             <button type="button" class="btn btn-primary" 
               data-dismiss="modal" aria-label="Close">
-              Tell My Story
+                @lang('map.tell_my_story_button')
             </button>
           </div>
         </div>
