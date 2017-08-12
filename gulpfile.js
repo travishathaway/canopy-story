@@ -26,6 +26,10 @@ elixir(mix => {
         'reveal-black.css'
     ], 'public/css/reveal.css');
 
+    mix.styles([
+        'font-awesome.min.css'
+    ], 'public/css/font-awesome.min.css');
+
     // Combine JS
     mix.scripts([
         'popper.js',

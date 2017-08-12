@@ -655,7 +655,7 @@ blockquote {
   padding: 10px;
 }
 
-.nav .navbar-brand {
+.nav .navbar-brand, h1, h2, h3, h4, h5, h6 {
   font-family: 'Lora', serif;
 }
 
@@ -681,33 +681,9 @@ blockquote {
   min-height: 100%;
 }
 
-.searchbox {
-    padding: 10px;
-    padding-top: 25px;
-}
-
-#btn-group {
-    margin: 0 auto;
-    text-align: center;
-}
-
-.carousel-caption {
-    text-shadow: 0px 0px 7px #111;
-}
-
-#center {
-    border-radius: 5px;
-    border: 1px solid #666;
-    background-color: #fff;
-    padding: 1em 2em 2em 2em;
-    max-width: 450px;
-    box-shadow: 0px 0px 4px 2px #555;
-}
-
 .card-image {
     position: relative;
     border: 1px solid #999;
-    box-shadow: 0px 0px 1px 1px #999;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -734,16 +710,6 @@ blockquote {
 
 .card-image-controls .control:hover {
   cursor: pointer;
-}
-
-#cards-container {
-    align-items: flex-start;
-    box-sizing: content-box;
-    display: inline-flex;
-    justify-content: flex-start;
-    flex-flow: row wrap;
-    margin: 0 auto;
-    margin-left: 114px;
 }
 
 .delete-post {

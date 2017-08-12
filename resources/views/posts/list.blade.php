@@ -1,18 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
-  <form action="" method="get" class="searchbox">
+  <div class="row">
+    <div class="ml-auto col-sm-12 col-lg-8 mr-auto">
+      <h1 class="mt-4">Find Stories</h1>
+    </div>
+  </div>
+  <form action="" method="get" >
     <div class="row">
-      <div class="col-md-offset-1 col-md-8">
+      <div class="ml-auto col-sm-12 col-md-8 col-lg-5">
         <input type="text" class="form-control" name="q" placeholder="Seach for a Canopy Story"
             value="{{ $q }}"/>
       </div>
-      <div class="col-md-4">
+      <div class="col-sm-12 col-md-4 col-lg-3 mr-auto">
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-6">
             <button type="submit" class="btn btn-primary btn-block">Search</button>
           </div>
-          <div class="col-md-6">
+          <div class="col-6">
             <a href="{{ url('post') }}" role="button" class='btn btn-dark btn-block'>Reset</a>
           </div>
         </div>
@@ -20,25 +25,16 @@
     </div>
   </form>
   <hr />
-  <br />
   @if($posts->count() > 0)
-  <div class="visible-lg visible-md">
-    <div class="row">
     @foreach ($posts as $post)
+    <div class="row">
       @include('partials.card')
-      @if($loop->iteration % 3 == 0)
-      </div>
-        @if(!$loop->last)
-        <div class="row">
-        @endif
-      @endif
-      @if($loop->last)
-      </div>
-      @endif
+    </div>
     @endforeach
-  </div>
-  <div class="text-center">
-    {{ $posts->appends(['q' => $q])->links() }}
+  <div class="row justify-content-center">
+      <div class="col-md-7">
+        @include('pagination.default', ['paginator' => $posts])
+      </div>
   </div>
   @else
   <div class="row">
