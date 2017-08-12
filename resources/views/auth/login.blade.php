@@ -5,11 +5,12 @@ Login
 @endsection
 
 @section('content')
-<div id="wrapper"></div>
-<div id="main">
-  <div class='text-center' id="center">
-    <h1>Sign in to {{ config('app.name') }}</h1>
-    <div id="popup-form">
+<br />
+<div class="row justify-content-md-center">
+  <div class="col-md-6">
+    <div class="text-center">
+      <h1>Sign in to {{ config('app.name') }}</h1>
+      <hr />
       <div class="box">
         <div class="request">
           @include('partials.social-login')

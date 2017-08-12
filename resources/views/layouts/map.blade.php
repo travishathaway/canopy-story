@@ -1,17 +1,17 @@
 <html>
 <head>
   <title>@yield('title')</title>
-  @section('styles')
-  <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
-  <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
-    
-	<link rel="stylesheet" href="{{ elixir('css/all.css') }}" />
+  @include('partials.base-styles')
 
+  @section('styles')
   @show
 
     </head>
     <body>
-        @yield('content')
+        @section('content')
+            @include('partials.site-menu')
+        @show
+
         @section('scripts')
         <script src="{{ elixir('js/all.js') }}"></script>
         <script src="{{ asset('js/Autolinker.min.js') }}"></script>

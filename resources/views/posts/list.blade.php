@@ -1,46 +1,25 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12 white-bkgrnd search-header">
-      <div class="pull-right" id="profile-buttons">
-        @if(\App::getLocale() === 'en')
-        <a href="?lang=es" class="btn btn-default btn-sm">
-          <span class="text-muted"><span class="lang-sm lang-lbl" lang="es"></span></span>
-        </a>
-        @else
-        <a href="?lang=en" class="btn btn-default btn-sm">
-          <span class="text-muted"><span class="lang-sm lang-lbl" lang="en"></span></span>
-        </a>
-        @endif
-        @if(Auth::check())
-        <a href="/logout" class="btn btn-sm btn-default pull-right">Logout</a>
-        @else
-        <a href="/login" class="btn btn-sm btn-default pull-right">Login</a>
-        @endif
+  <form action="" method="get" class="searchbox">
+    <div class="row">
+      <div class="col-md-offset-1 col-md-8">
+        <input type="text" class="form-control" name="q" placeholder="Seach for a Canopy Story"
+            value="{{ $q }}"/>
       </div>
-      <div class="col-md-12 text-center">
-        <h1><a id="title-link" href="/">{{ config('app.name') }}</a></h1>
-        <h4>What&rsquo;s new in your neck of the woods?</h4>
-      </div>
-      <form action="" method="get">
+      <div class="col-md-4">
         <div class="row">
-          <div class="col-md-offset-1 col-md-8">
-            <input type="text" class="form-control" name="q" placeholder="Seach for a Tree Story"
-                value="{{ $q }}"/>
+          <div class="col-md-6">
+            <button type="submit" class="btn btn-primary btn-block">Search</button>
           </div>
-          <div class="col-md-3">
-            <div class="btn-group pull-right" id="search-buttons">
-                <button type="submit" class="btn btn-default">Search</button>
-                <a href="{{ url('post') }}" class='btn btn-warning'>Clear</a>
-                <a href="{{ url('/') }}" class="btn btn-default" id="list_back_button">Back</a>
-            </div>
+          <div class="col-md-6">
+            <a href="{{ url('post') }}" role="button" class='btn btn-dark btn-block'>Reset</a>
           </div>
         </div>
-      </form>
+      </div>
     </div>
-  </div>
+  </form>
+  <hr />
   <br />
   @if($posts->count() > 0)
   <div class="visible-lg visible-md">
@@ -55,36 +34,6 @@
       @endif
       @if($loop->last)
       </div>
-      @endif
-    @endforeach
-  </div>
-  <div class="visible-sm">
-    <div class="row">
-    @foreach ($posts as $post)
-      @include('partials.card')
-      @if($loop->iteration % 2 == 0)
-      </div>
-        @if(!$loop->last)
-        <div class="row">
-        @endif
-      @endif
-      @if($loop->last)
-      </div>
-      @endif
-    @endforeach
-  </div>
-  <div class="visible-xs">
-    <div class="row">
-    @foreach ($posts as $post)
-      @include('partials.card')
-      @if($loop->iteration % 1 == 0)
-      </div>
-      @if(!$loop->last)
-      <div class="row">
-      @endif
-        @if($loop->last)
-        </div>
-        @endif
       @endif
     @endforeach
   </div>

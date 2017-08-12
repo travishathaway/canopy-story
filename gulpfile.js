@@ -11,7 +11,6 @@ elixir(mix => {
 
     // Combine CSS
     mix.styles([
-        'main.css',
         'languages.min.css',
         'map/leaflet-geojson-selector.css',
         'map/MarkerCluster.css',
@@ -19,6 +18,7 @@ elixir(mix => {
         '../bower/bootstrap/dist/css/bootstrap.min.css',
         '../bower/leaflet/dist/leaflet.css',
         '../bower/fancybox/dist/jquery.fancybox.min.css',
+        'main.css',
     ]);
 
     mix.styles([
@@ -28,6 +28,7 @@ elixir(mix => {
 
     // Combine JS
     mix.scripts([
+        'popper.js',
         '../bower/jquery/dist/jquery.js',
         '../bower/bootstrap/dist/js/bootstrap.min.js',
         '../bower/leaflet/dist/leaflet.js',

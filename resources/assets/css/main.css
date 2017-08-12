@@ -1,20 +1,49 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
 body {
-    padding: 0;
-    margin: 0;
-    position: absolute;
-    overflow-x: hidden;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 blockquote {
   font-size: 1em !important;
 }
 
-.white-bkgrnd {
-    background-color: #FFF;
+.nav {
+  padding: 10px;
 }
 
-.search-header {
+.nav .navbar-brand {
+  font-family: 'Lora', serif;
+}
+
+.map-bg {
+  background-image: url('../images/map-bg-dark.png');
+  background-attachment: fixed;
+  background-repeat: repeat;
+  background-size: auto;
+}
+
+/* Sticky Footer stuff */
+.footer {
+  position: absolute;
+  bottom: 0;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  line-height: 60px; /* Vertically center the text there */
+}
+
+.white-background {
+  background-color: #FFF;
+  padding-top: 60px;
+  min-height: 100%;
+}
+
+.searchbox {
     padding: 10px;
+    padding-top: 25px;
 }
 
 #btn-group {
@@ -33,27 +62,6 @@ blockquote {
     padding: 1em 2em 2em 2em;
     max-width: 450px;
     box-shadow: 0px 0px 4px 2px #555;
-}
-
-.card {
-    overflow: hidden;
-    align-self: flex-start;
-    background-color: #fff;
-    margin: 1em;
-    border-radius: 3px;
-    border: 1px solid #666;
-    padding: 1em 0;
-    box-shadow: 0px 0px 4px 2px #555;
-    vertical-align: top;
-}
-
-.card > div {
-    max-width: 100%;
-    margin: auto;
-}
-
-.card > div > .row {
-    margin-top: 0.5em;
 }
 
 .card-image {
@@ -180,12 +188,8 @@ html, body {
 }
 
 #map {
-    position: absolute;
     height: 100%;
-    min-height: 100%;
-    width: 100%;
-    top: 0px;
-    z-index: 1;
+    width: auto;
 }
 
 .destroyer{
@@ -196,23 +200,6 @@ html, body {
 
 #dropbox {
     border: 2px dotted #ddd;
-}
-
-#copyR{
-    background-image:'images/SUPRWatermark.png';
-    background-repeat:repeat;
-    background-color:rgba(0,0,0,0.5);
-    bottom:0;
-    color:red;
-    display: inline;
-    height: 100%;
-    left:0;
-    overflow-y: scroll;
-    text-align:center;
-    padding:10px;
-    position:fixed;
-    width:100%;
-    z-index:9999999999999;
 }
 
 #internal {
