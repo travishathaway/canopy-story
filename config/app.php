@@ -213,7 +213,12 @@ return [
          * Form elements and other HTML things
          * https://laravelcollective.com/docs/5.2/html
          */
-        Collective\Html\HtmlServiceProvider::class
+        Collective\Html\HtmlServiceProvider::class,
+
+        /**
+         * Laravel Passport: https://laravel.com/docs/5.4/passport
+         */
+        Laravel\Passport\PassportServiceProvider::class,
     ],
 
     /*

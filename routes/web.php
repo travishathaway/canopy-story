@@ -78,6 +78,13 @@ Route::get('/partials/social-login', function(){
 });
 
 /**
+ * Site About Us page
+ */
+Route::get('/about', function(){
+    return view('pages.about');
+})->name('about');
+
+/**
  * Get and retrieve a post image
  */
 Route::post('/post/image', [
@@ -91,7 +98,7 @@ Route::get('/post/image', [
 ]);
 
 /**
- * Get and retrieve a post
+ * Post Controllers
  */
 
 Route::post('/post/{id}', [
@@ -114,6 +121,9 @@ Route::get('/post', [
   'uses' => 'PostController@get'
 ]);
 
+/**
+ * Survey Controllers
+ */
 Route::get('/survey', [
   'as' => 'survey',
   'uses' => 'SurveyController@get'
@@ -124,3 +134,14 @@ Route::post('/survey', [
   'as' => 'survey.create',
   'uses' => 'SurveyController@create'
 ])->middleware('auth');
+
+
+/**
+ * User Controllers
+ */
+Route::get('user/{id}', 'UserController@show')->name('user.profile');
+Route::get('user', 'UserController@index')->name('users');
+
+/**
+ * Admin Controllers
+ */

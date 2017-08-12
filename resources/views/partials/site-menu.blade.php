@@ -47,6 +47,9 @@
               </a>
 
               <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="{{ route('user.profile', ['id' => Auth::user()->id]) }}">
+                    Profile
+                </a>
                 <a class="dropdown-item" role="button" href="{{ url('logout') }}">
                   <span class='glyphicon glyphicon-user'></span> Logout
                 </a>

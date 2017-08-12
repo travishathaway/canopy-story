@@ -9,9 +9,11 @@
         "devfactory/minify": "^1.0",
         "folklore/image": "0.3.*",
         "laravel/framework": "5.4.*",
+        "laravel/passport": "^3.0",
         "laravel/socialite": "^3.0",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.2.0",
+        "optimus/heimdal": "^1.5",
         "patrickschur/language-detection": "^3.1"
     },
     "require-dev": {
