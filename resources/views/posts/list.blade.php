@@ -1,5 +1,12 @@
 @extends('layouts.app')
 
+@section('style')
+@parent
+
+<link rel="stylesheet" href="{{ mix('css/jquery.fancybox.css') }}" />
+
+@endsection
+
 @section('content')
   <div class="row">
     <div class="ml-auto col-sm-12 col-lg-8 mr-auto">
@@ -51,7 +58,7 @@
 
 @section('script')
 @parent
-<script src="{{ asset('js/jquery.fancybox.min.js')}}" type="text/javascript"></script>
+<script src="{{ mix('js/jquery.fancybox.js')}}" type="text/javascript"></script>
 <script>
 $(document).ready(function(){
   $('.image-container').each(function(idx, obj){

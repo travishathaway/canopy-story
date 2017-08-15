@@ -59,7 +59,8 @@ var updated_trees = [];
 $('#tutorial-modal').on('hide.bs.modal', function(){
   $('#legend').css({'visibility': 'visible'});
 });
-
 </script>
-<script src="{{ elixir('js/map.js') }}" type="text/javascript"></script>
+
+<script src="{{ mix('js/map.js') }}"></script>
+
 @endsection

@@ -1,3 +1,5 @@
+import Popper from 'popper.js';
+import Tether from 'tether';
 
 window._ = require('lodash');
 
@@ -10,7 +12,10 @@ window._ = require('lodash');
 try {
     window.$ = window.jQuery = require('jquery');
 
-    require('bootstrap-sass');
+    // Bootstrap Requirements
+    window.Popper = Popper;
+
+    require('bootstrap');
 } catch (e) {}
 
 /**
