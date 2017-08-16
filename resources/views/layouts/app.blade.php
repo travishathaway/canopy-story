@@ -7,7 +7,6 @@
     @section('style')
     @show
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
   </head>
   <body>
     @include('partials.site-menu')

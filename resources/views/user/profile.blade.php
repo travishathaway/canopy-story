@@ -2,28 +2,21 @@
 
 @section('content')
   <div class="row">
-    <div class="ml-auto col-sm-12 col-lg-8 mr-auto">
+    <div class="ml-auto col-sm-12 col-lg-6 mr-auto">
       <h1 class="mt-4">Profile</h1>
+      <div id="user-profile"></div>
     </div>
   </div>
 @endsection
 
 @section('script')
 @parent
-
 <script>
-$(document).ready(function(){
-    $.ajax({
-        'method': 'GET',
-        'url': '/api/v1/user/1',
-        'success': function(data){
-            console.log(data);
-        },
-        'error': function(data){
-            console.log(data);
-        }
-    });
-});
+  /**
+   * User Profile obejct for app
+   */
+  window.UserProfile = {};
+  window.UserProfile.user_resource_url = '/api/v1/user/{{$user->id}}';
 </script>
-
+<script src="{{mix('js/user-profile.js')}}"></script>
 @endsection

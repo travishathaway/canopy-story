@@ -18,6 +18,14 @@ mix.js([
   'resources/assets/js/app.js'
 ], 'public/js/app.js')
 
+
+/**
+ * React Apps
+ */
+.react([
+  'resources/assets/js/user-profile/app.js'
+], 'public/js/user-profile.js')
+
 .js(
   'resources/assets/bower/fancybox/dist/jquery.fancybox.js', 
   'public/js/jquery.fancybox.js'

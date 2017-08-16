@@ -18,4 +18,5 @@ Route::group(['middleware' => 'auth:api', 'prefix' => '/v1'], function () {
      * User API endpoints
      */
     Route::get('user/{id}', 'API\UserAPIController@show');
+    Route::post('user/{id}', 'API\UserAPIController@update');
 });
