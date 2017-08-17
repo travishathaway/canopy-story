@@ -16,7 +16,7 @@ html, body, #map {
 @section('content')
     @parent
     <div id="map"></div>
-    <div class="map-legend">
+    <div class="map-legend d-none d-md-block">
         <button class="btn btn-info" data-toggle="modal" data-target="#tutorial-modal">
           How to use this map <i class="fa fa-question-circle"></i>
         </button>

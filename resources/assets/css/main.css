@@ -28,8 +28,9 @@ blockquote {
   background-image: url('../images/psu_iss_logo.png');
   background-repeat: no-repeat;
   background-position: center;
+  background-size: 165px;
   height: 40px;
-  width: 215px;
+  width: 180px;
 }
 
 #fs-logo {
