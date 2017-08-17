@@ -1,12 +1,12 @@
 {
-    "/js/user-profile.js": "/js/user-profile.js",
-    "/js/app.js": "/js/app.js",
-    "/js/upload.js": "/js/upload.js",
-    "/js/jquery.fancybox.js": "/js/jquery.fancybox.js",
-    "/js/map.js": "/js/map.js",
-    "/js/reveal.js": "/js/reveal.js",
-    "/css/all.css": "/css/all.css",
-    "/css/reveal.css": "/css/reveal.css",
-    "/css/jquery.fancybox.css": "/css/jquery.fancybox.css",
-    "/css/font-awesome.min.css": "/css/font-awesome.min.css"
+    "/js/user-profile.js": "/js/user-profile.js?id=07f9250591d92c9157ca",
+    "/js/app.js": "/js/app.js?id=538faae88c6236a53683",
+    "/js/upload.js": "/js/upload.js?id=57f399ac9c42b807609c",
+    "/js/jquery.fancybox.js": "/js/jquery.fancybox.js?id=dd8d370882c4bf5bba15",
+    "/js/map.js": "/js/map.js?id=53cb23f734eb8c0f32c7",
+    "/js/reveal.js": "/js/reveal.js?id=40d0b185826a4233e58f",
+    "/css/all.css": "/css/all.css?id=ec901747adc3d78eb37b",
+    "/css/reveal.css": "/css/reveal.css?id=a9b5a517a4c111718219",
+    "/css/jquery.fancybox.css": "/css/jquery.fancybox.css?id=80a16036b0b864775066",
+    "/css/font-awesome.min.css": "/css/font-awesome.min.css?id=269550530cc127b6aa5a"
 }

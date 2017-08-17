@@ -18,7 +18,6 @@ mix.js([
   'resources/assets/js/app.js'
 ], 'public/js/app.js')
 
-
 /**
  * React Apps
  */
@@ -99,4 +98,6 @@ mix.js([
  */
 .styles([
     'resources/assets/css/font-awesome.min.css'
-], 'public/css/font-awesome.min.css');
+], 'public/css/font-awesome.min.css')
+
+.version();
