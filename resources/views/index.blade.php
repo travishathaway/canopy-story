@@ -15,6 +15,11 @@ html, body, #map {
 @section('content')
     @parent
     <div id="map"></div>
+    <div class="map-legend">
+        <button class="btn btn-info" data-toggle="modal" data-target="#tutorial-modal">
+          How to use this map <i class="fa fa-question-circle"></i>
+        </button>
+    </div>
     @include('partials.tutorial-modal')
 @endsection
 
@@ -37,28 +42,8 @@ var share_email = '{{ config('app.share_email') }}'
 
 var upload_file_location = '{{ elixir('js/upload.js') }}';
 
-function checkLogin(){
-    try{
-        if(has_visited === false){
-          $('#tutorial-modal').modal('show');
-        } else {
-          $('#legend').css({'visibility': 'visible'});
-        }
-    } catch(ReferenceError){
-        setTimeout(function(){
-            checkLogin();
-        }, 250);
-    }
-}
-
-checkLogin();
-
 var updated = [];
 var updated_trees = [];
-
-$('#tutorial-modal').on('hide.bs.modal', function(){
-  $('#legend').css({'visibility': 'visible'});
-});
 </script>
 
 <script src="{{ mix('js/map.js') }}"></script>

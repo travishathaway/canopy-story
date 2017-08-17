@@ -104,57 +104,13 @@ html, body {
     width: 100%;
 }
 
-#hide:hover {
-    cursor: pointer;
-}
-
-#legend {
-    color: #eee;
-    width: 350px;
-    height: 200px;
-    max-width: 350px;
-    max-height: 200px;
-    background-color: #666;
-    padding: 1em;
-    position: absolute;
-    bottom: 0;
-    left: 0.5em;
-    box-shadow: 0px 0px 1px 1px #333;
-    z-index: 10;
-    visibility: hidden;
-}
-
-#legend .row {
-  margin-top: 10px;
-}
-
-#legend .row.key img {
-  padding-right: 5px;
-}
-
-#legend > p > a {
-    background-color: #999;
-    border: 1px solid #444;
-}
-
-#legend > p > a:hover {
-    background-color: #aaa;
-}
-
-#legend > table > tbody > tr > td {
-    padding: 5px;
-}
-
-#legend > p {
-    margin: 0 auto;
-}
-
-#legend > table > tbody > tr > td > img {
-    box-shadow: 0px 0px 1px 1px #333;
-}
-
-#list_back_button {
-    margin: 0 0 0 0;
+.map-legend {
+  position: absolute;
+  top:60px;
+  left: 0;
+  padding: 15px 10px;
+  z-index: 10000;
+  background-color: rbga(0, 0, 0, 0.5);
 }
 
 #profile-buttons .btn {
