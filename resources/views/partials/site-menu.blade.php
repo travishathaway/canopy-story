@@ -13,10 +13,25 @@
         <li class="nav-item">
             <a class="nav-link" href="{{ route('post') }}">@lang('menu.find_stories')</a>
         </li>
-        <li class="nav-item">
+        <!--li class="nav-item">
             <a class="nav-link" href="{{ route('about') }}">@lang('menu.about_us')</a>
-        </li>
+        </li-->
       </ul>
+      <div class="d-flex flex-row ml-auto mr-auto logo-container">
+        <div class="pr-2" style="border-right: 1px solid #eee">
+          <a href="https://www.pdx.edu/sustainability/iss" 
+              title="Portland State University Institute for Sustainable Solutions">
+            <div id="psu-iss-logo">
+            </div>
+          </a>
+        </div>
+        <div class="ml-2 mr-2">
+        <a href="https://www.fs.fed.us/" title="U.S. Forest Service">
+          <div id="fs-logo">
+          </div>
+        </a>
+      </div>
+    </div>
     @if(isset($is_map))
     <!--form class="form-inline ml-md-auto mr-5 my-lg-0">
       <input class="form-control " type="text" placeholder="@lang('menu.search_bar')" 

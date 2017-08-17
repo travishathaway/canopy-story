@@ -19,6 +19,29 @@ blockquote {
   font-family: 'Lora', serif;
 }
 
+.logo-container {
+  background-color: white;
+  border-radius: 5px;
+}
+
+#psu-iss-logo {
+  background-image: url('../images/psu_iss_logo.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 40px;
+  width: 215px;
+}
+
+#fs-logo {
+  background-image: url('../images/FS_green.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 33px;
+  background-position-y: 2px;
+  height: 40px;
+  width: 40px;
+}
+
 .map-bg {
   background-image: url('../images/map-bg-dark.png');
   background-attachment: fixed;
