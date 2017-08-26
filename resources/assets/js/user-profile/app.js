@@ -140,9 +140,9 @@ class UserProfile extends Component {
       <div>
         <div className="pull-right">
           {form_state === 'view' && 
-            <a href="#" onClick={this.toggleProfileState.bind(this)}>
+            <Button color="secondary" onClick={this.toggleProfileState.bind(this)}>
               Edit
-            </a>
+            </Button>
           }
         </div>
         {form_error_message !== '' &&
@@ -153,13 +153,13 @@ class UserProfile extends Component {
         {fields}
         {(form_state === 'edit' || form_state === 'loading') && 
           <div className="d-flex justify-content-end">
-            <Button className="btn-outline-dark" 
+            <Button color="secondary" 
               onClick={this.cancel.bind(this)}
               disabled={form_state === 'loading'}
             >
               Cancel
             </Button>
-            <Button className="ml-2 btn-primary" 
+            <Button color="primary" className="ml-2" 
               onClick={this.save.bind(this)}
               disabled={form_state === 'loading'}
             >
@@ -204,12 +204,15 @@ class TextField extends Component {
   }
 
   render() {
+    var field_color = this.state.field_state === 'error' ? 'danger' : '';
+
     return (
-      <FormGroup>
+      <FormGroup color={field_color}>
         <Label for={this.props.id}>
           <strong>{this.props.label}</strong>
         </Label>
-        <Input type="text" name={this.props.id} disabled={this.state.form_state === 'loading'}
+        <Input type="text" name={this.props.id} state={field_color}
+          disabled={this.state.form_state === 'loading'}
           value={this.state.value} onChange={this.props.onChange}>
         </Input>
       </FormGroup>
