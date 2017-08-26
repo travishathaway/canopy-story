@@ -51,6 +51,14 @@ mix.js([
 ], 'public/js/map.js')
 
 /**
+ * Second version of the map js
+ */
+.js(
+  'resources/assets/js/story-map/app.js',
+  'public/js/story-map.js'
+)
+
+/**
  * Upload JS for images on map
  */
 .js('resources/assets/js/upload.js', 'public/js/upload.js')

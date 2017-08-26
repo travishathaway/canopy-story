@@ -47,6 +47,6 @@ var updated = [];
 var updated_trees = [];
 </script>
 
-<script src="{{ mix('js/map.js') }}"></script>
+<script src="{{ mix('js/story-map.js') }}"></script>
 
 @endsection
