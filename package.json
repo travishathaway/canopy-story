@@ -51,12 +51,14 @@
     "bootstrap": "^4.0.0-beta",
     "leaflet": "^1.2.0",
     "leaflet-hash": "^0.2.1",
+    "leaflet.markercluster": "^1.1.0",
     "popper.js": "^1.11.1",
     "react": "^15.6.1",
     "react-addons-css-transition-group": "^15.6.0",
     "react-addons-transition-group": "^15.6.0",
     "react-dom": "^15.6.1",
     "reactstrap": "^4.8.0",
+    "resumablejs": "^1.0.2",
     "tether": "^1.4.0"
   }
 }

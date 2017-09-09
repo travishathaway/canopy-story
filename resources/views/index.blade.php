@@ -21,30 +21,41 @@ html, body, #map {
           How to use this map <i class="fa fa-question-circle"></i>
         </button>
     </div>
+    <div class="modal fade" id="formModal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Share your story</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+          </div>
+        </div>
+      </div>
+    </div>
     @include('partials.tutorial-modal')
 @endsection
 
 @section('scripts')
 @parent
 <script>
-var base_dir = '{{ config('app.url') }}';
-var share_email = '{{ config('app.share_email') }}'
+/**
+* App Globals
+ */
+window.StoryMap = {};
+window.StoryMap.base_dir = '{{ config('app.url') }}';
+window.StoryMap.share_email = '{{ config('app.share_email') }}'
+window.StoryMap.upload_file_location = '{{ elixir('js/upload.js') }}';
+window.StoryMap.updated = [];
+window.StoryMap.updated_trees = [];
+
 @if(Auth::check())
-  var logged_in = true;
+window.StoryMap.logged_in = true;
 @else
-  var logged_in = false;
+window.StoryMap.logged_in = false;
 @endif
-
-@if($has_visited)
-  var has_visited = true;
-@else
-  var has_visited = false;
-@endif
-
-var upload_file_location = '{{ elixir('js/upload.js') }}';
-
-var updated = [];
-var updated_trees = [];
 </script>
 
 <script src="{{ mix('js/story-map.js') }}"></script>

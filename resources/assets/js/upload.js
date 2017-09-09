@@ -82,44 +82,35 @@ function listFiles(){
     $('#dropbox').html(html.join(""))
 }
 
-function dropbox(){
-    if($('#popup').is(":visible")){
-        $('#popup').ready(function(){
-            // init these DOM objects for the file upload
-            r.assignBrowse(document.getElementById("file"));
-            r.assignDrop(document.getElementById("dropbox"));
-            // start the upload process
-        });
+// init these DOM objects for the file upload
+r.assignBrowse(document.getElementById("file"));
+r.assignDrop(document.getElementById("dropbox"));
+// start the upload process
+
+$('#submit-treestory').on("click", function(e){
+    if(r.files.length > 0){
+        r.upload();
+        $(this).hide();
+        $(".progress").show();
     } else {
-        setTimeout(function(){ dropbox(); }, 50);
+        $("#form").submit();
     }
+});
 
-    $('#submit-treestory').on("click", function(e){
-        if(r.files.length > 0){
-            r.upload();
-            $(this).hide();
-            $(".progress").show();
-        } else {
-            $("#form").submit();
-        }
-    });
+$('.leaflet-popup-close-button').click(function(){
+    dropbox();
+});
 
-    $('.leaflet-popup-close-button').click(function(){
-        dropbox();
-    });
+$('#dropbox').on("click", function(e){
+    $('#file').click();
+})
 
-    $('#dropbox').on("click", function(e){
-        $('#file').click();
-    })
-
-    $('#dropbox').on('click', '.remove-file', function(e){
-        e.stopPropagation();
-        var index = parseInt($(this).data("index"))
-        r.removeFile(r.files[index])
-        listFiles();
-    });
-}
-dropbox();
+$('#dropbox').on('click', '.remove-file', function(e){
+    e.stopPropagation();
+    var index = parseInt($(this).data("index"))
+    r.removeFile(r.files[index])
+    listFiles();
+});
 
 var accepted_filetypes = [
     'jpg',

@@ -280,45 +280,38 @@ if (clusterOn){
 // Get the popup content
 var popcont = "";
 function getPopupContent(){
-    try {
-        if(logged_in){
-            // User is logged in to social media
-            // and has approved this application,
-            // so get the treestory form and put
-            // it in the popcont variable
-            $.ajax({
-                url: base_dir+"/popup",
-                type: 'get',
-                async: true,
-                success: function(html){
-                    popcont = html;
-                }
-            });
-        }
-        else {
-            // User is not logged into social media.
-            // Fill popcont with login form.
-            $.ajax({
-                url: base_dir+"/partials/social-login",
-                type: 'get',
-                async: true,
-                success: function(html){
-                    popcont = '<br>';
-                    popcont = '<p>To share your story, please sign in using:</p>'
-                    popcont += html;
-                    popcont += "<p>If you do not want to sign in, you can also send us an email.</p>";
-                    popcont += '<a class="btn btn-outline-primary btn-large" style="width: 188px" title="Share via email" href="mailto:'+share_email+'?'+
-                        'subject=Canopy Story for tree --tree_id-- at --tree_location--&'+
-                        'body=Hello, %0D%0A%0D%0AI would like to share my Canopy Story%0D%0A%0D%0A ---Write below this line---%0D%0A%0D%0A">'+
-                        '<span class="glyphicon glyphicon-envelope"></span> Share via email'+
-                    '</a>';
-                }
-            });
-        }
-    }
-    catch(ReferenceError){
-        // Things most likely havent loaded yet.
-        setTimeout(function(){ getPopupContent()}, 250);
+    if( logged_in ){
+        // User is logged in to social media
+        // and has approved this application,
+        // so get the treestory form and put
+        // it in the popcont variable
+        $.ajax({
+            url: base_dir+"/popup",
+            type: 'get',
+            async: true,
+            success: function(html){
+                popcont = html;
+            }
+        });
+    } else {
+        // User is not logged into social media.
+        // Fill popcont with login form.
+        $.ajax({
+            url: base_dir+"/partials/social-login",
+            type: 'get',
+            async: true,
+            success: function(html){
+                popcont = '<br>';
+                popcont = '<p>To share your story, please sign in using:</p>'
+                popcont += html;
+                popcont += "<p>If you do not want to sign in, you can also send us an email.</p>";
+                popcont += '<a class="btn btn-outline-primary btn-large" style="width: 188px" title="Share via email" href="mailto:'+share_email+'?'+
+                    'subject=Canopy Story for tree --tree_id-- at --tree_location--&'+
+                    'body=Hello, %0D%0A%0D%0AI would like to share my Canopy Story%0D%0A%0D%0A ---Write below this line---%0D%0A%0D%0A">'+
+                    '<span class="glyphicon glyphicon-envelope"></span> Share via email'+
+                '</a>';
+            }
+        });
     }
 }
 getPopupContent();

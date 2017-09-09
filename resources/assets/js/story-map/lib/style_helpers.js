@@ -45,7 +45,7 @@ const StyleHelpers =  {
   },
 
   doStyleTrees: function(x, located){
-    var opacity = 0.2 * story_count;
+    // var opacity = 0.2 * story_count;
 
     if (x.properties.MAX_GRID_C >= 50.0 && x.properties.MAX_GRID_C <= 62.9233396667) {
       return {
