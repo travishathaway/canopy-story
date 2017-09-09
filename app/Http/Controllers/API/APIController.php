@@ -14,16 +14,6 @@ use \Illuminate\Http\Response as Res;
 class APIController extends Controller
 {
     /**
-     * Create a new authentication controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->beforeFilter('auth', ['on' => 'post']);
-    }
-
-    /**
      * @var int
      */
     protected $statusCode = Res::HTTP_OK;
