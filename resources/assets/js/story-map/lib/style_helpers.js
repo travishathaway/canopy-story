@@ -1,35 +1,13 @@
-class StyleHelpers {
+'use strict';
+import * as $ from 'jquery';
+
+const StyleHelpers =  {
   /**
    * Styles the neighborhood boundary polygons
    */
-  doStylenbo(feature){
-    return {
-      color: 'orange',
-      fillColor: 'yellow',
-      weight: 5,
-      dashArray: '9',
-      opacity: 1.0,
-      fillOpacity: 0.08
-    }
-  }
-
-  doStyleALL(feature) {
-    dataName = feature.properties.NAME.replace("/", " ");
-    var story_count = 0;
-
-    $(updated).each(function(){
-      if(String(this) == dataName){
-        story_count+=1;
-      }
-    });
-
-    if($.inArray(dataName, updated) > -1){
-      color = 'blue';
-      fillOpacity = 0.1*story_count;
-    } else {
-      color = "yellow";
-      fillOpacity = 0.00;
-    }
+  getDefaultStyle: function() {
+    var color = "yellow";
+    var fillOpacity = 0.0;
 
     return {
       color: 'orange',
@@ -38,29 +16,37 @@ class StyleHelpers {
       opacity: 1.0,
       fillOpacity: fillOpacity
     };
-  }
+  },
 
-  doStyleTrees(x, located){
-    var contains = false;
-    var story_count = 0;
+  /**
+   * Get Mouse Over Styles for a polygon
+   */
+  getHoverStyle: function() {
+    return {
+      color: 'orange',
+      fillColor: 'yellow',
+      weight: 5,
+      opacity: 1.0,
+      fillOpacity: 0.6
+    };
+  },
 
-    $(updated_trees).each(function(){
-      if($(this)[0] == x.id && $(this)[1] == located){
-        contains = true;
-      }
-      if($(this)[1] == located){
-        story_count++;
-      }
-    });
-
-    var opacity = 0.2 * story_count;
-    if(contains){
-      return {
-        radius: 7.0,
-        fillColor: '#1919ff',
-        fillOpacity: opacity,
-      }
+  /**
+   * Returns the style for a currently selected neighborhood
+   */
+  getSelectedNboStyle: function(){
+    return {
+      color: 'orange',
+      fillColor: 'yellow',
+      weight: 5,
+      opacity: 1.0,
+      fillOpacity: 0.15
     }
+  },
+
+  doStyleTrees: function(x, located){
+    var opacity = 0.2 * story_count;
+
     if (x.properties.MAX_GRID_C >= 50.0 && x.properties.MAX_GRID_C <= 62.9233396667) {
       return {
         radius: 3.0,
@@ -123,7 +109,6 @@ class StyleHelpers {
       }
     }
   }
-
 }
 
 export default StyleHelpers
