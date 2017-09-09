@@ -2,7 +2,6 @@
 import L from 'leaflet';
 import 'leaflet-hash';
 import 'leaflet.markercluster';
-//import * as $ from 'jquery';
 import 'jquery';
 import 'bootstrap';
 import Resumable from 'resumablejs';
@@ -75,6 +74,7 @@ class MapCtrl {
         onEachFeature: function(feature, layer){
           layer.on({
             click: function(e){
+              console.log(e.target.feature.properties);
               var popup_html = that.popup_html;
 
               popup_html = popup_html.replace(
@@ -85,6 +85,9 @@ class MapCtrl {
 
               // Put form HTML in modal
               $('#formModal .modal-body').html(popup_html);
+              $('#popup #tree-height').text(e.target.feature.properties.d_ft);
+              $('#popup #tree-location').text(that.selected_polygon_props.NAME);
+              $('#popup #tree-id').text(e.target.feature.id);
 
               // Get the script having to do with uploads,
               // but only when an upload needs to be done
