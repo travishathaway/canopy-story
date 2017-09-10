@@ -48,6 +48,7 @@
   "author": "Moeen Basra",
   "license": "ISC",
   "dependencies": {
+    "@mapbox/leaflet-pip": "^1.1.0",
     "bootstrap": "^4.0.0-beta",
     "leaflet": "^1.2.0",
     "leaflet-hash": "^0.2.1",

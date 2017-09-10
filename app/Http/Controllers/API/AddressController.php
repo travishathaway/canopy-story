@@ -18,7 +18,7 @@ class AddressController extends APIController
         $records = DB::table('portland_addresses')
             ->select('add_full', 'city', 'state_abbr', 'lat', 'lng')
             ->where(
-                'add_full', 'like', "{$request->input('q')}%"
+                'add_full', 'like', "%{$request->input('q')}%"
             )->limit(10);
 
         return $records->get();

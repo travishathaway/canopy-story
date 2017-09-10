@@ -110,8 +110,17 @@ html, body {
   top:60px;
   left: 0;
   padding: 10px 10px;
-  z-index: 10000;
-  background-color: rbga(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.map-search {
+  width: 400px;
+  position: absolute;
+  top: 60px;
+  right: 0;
+  padding: 10px 10px;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 #profile-buttons .btn {

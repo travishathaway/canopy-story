@@ -21,6 +21,9 @@ html, body, #map {
           How to use this map <i class="fa fa-question-circle"></i>
         </button>
     </div>
+    <div class="map-search">
+        <input class="form-control typeahead" type="text" placeholder="Enter address..." />
+    </div>
     <div class="modal fade" id="formModal">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -58,6 +61,7 @@ window.StoryMap.logged_in = false;
 @endif
 </script>
 
+<script src="/js/typeahead.jquery.js"></script>
 <script src="{{ mix('js/story-map.js') }}"></script>
 
 @endsection

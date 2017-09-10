@@ -2,9 +2,12 @@
 import L from 'leaflet';
 import 'leaflet-hash';
 import 'leaflet.markercluster';
+import leafletPip from '@mapbox/leaflet-pip';
 import 'jquery';
 import 'bootstrap';
 import Resumable from 'resumablejs';
+import Bloodhound from '../typeahead.js/bloodhound.js';
+
 
 // Custom module imports
 import StyleHelpers from './lib/style_helpers.js';
@@ -52,6 +55,12 @@ class MapCtrl {
      * These are the markers contained within a polygon
      */
     this.markers = undefined;
+
+    /**
+     * This is the circle marker we use to keep track of our
+     * current location
+     */
+    this.current_location = undefined;
   }
 
   /**
@@ -115,24 +124,53 @@ class MapCtrl {
 
   /**
    * Zooms to the extent of the feature when event is triggered. This also
-   * fires off an event that let's listeners know that a feature has been
-   * selected.
+   * gets the point data for this polygon and sets it as selected.
    */
   zoomToFeature(e) {
-    let feature_id = e.target.feature.properties.ORIG_FID;
+    this.setSelectedPolygon(e.target.feature);
+    e.target.setStyle(StyleHelpers.getSelectedNboStyle());
 
-    if( feature_id !== this.selected_polygon_id ){
-      // Get the point data for this polygon
-      this.getPointsForPolygon(e.target.feature);
-    }
-
-    this.selected_polygon_id = feature_id;
-    this.selected_polygon_props = e.target.feature.properties;
     this.layers.nbo_polygons.setStyle(StyleHelpers.getDefaultStyle())
 
     // Zoom map to feature
     this.map.fitBounds(e.target.getBounds());
-    e.target.setStyle(StyleHelpers.getSelectedNboStyle());
+  }
+
+  /**
+   * Zooms to a specific lat/lng provided
+   */
+  zoomToLatLng(lat, lng){
+    if( this.current_location !== undefined ){
+      this.map.removeLayer(this.current_location);
+    }
+
+    // Marker our current location on the map with a red dot
+    var current_location = L.circle([lat, lng], {
+      color: 'red',
+      fillColor: '#f03',
+      fillOpacity: 0.5,
+      radius: 2
+    }).addTo(this.map);
+
+    this.current_location = current_location;
+
+    // Set the map to the current lat/lng and zoom to maxim view
+    this.map.setView([lat, lng], 18);
+  }
+
+  /**
+   * Sets feature to currently selected polygon
+   */
+  setSelectedPolygon(feature){
+    var feature_id = feature.properties.ORIG_FID;
+
+    if( feature_id !== this.selected_polygon_id ){
+      // Get the point data for this polygon
+      this.getPointsForPolygon(feature);
+    }
+
+    this.selected_polygon_id = feature_id;
+    this.selected_polygon_props = feature.properties;
   }
 
   /**
@@ -271,6 +309,11 @@ $.ajax({
   }
 });
 
+/**
+ * Set up the upload pop content that will allow users to add a
+ * tree story. This part of the code is still a bit messy and left
+ * over from the first implementation of the story map
+ */
 if( LOGGED_IN ){
   // User is logged in to social media
   // and has approved this application,
@@ -307,3 +350,39 @@ if( LOGGED_IN ){
   });
 }
 
+/**
+ * TypeAhead setup. This is the search bar we provided to allow users
+ * to quickly zoom to a location when they enter an address. More information
+ * and demos can be found here:
+ *  - https://twitter.github.io/typeahead.js/examples/
+ *  - https://github.com/twitter/typeahead.js/blob/master/doc/jquery_typeahead.md
+ */
+var addresses = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  remote: {
+    url: '/api/v1/address?q=%QUERY',
+    wildcard: '%QUERY'
+  }
+});
+
+$('.typeahead').typeahead({
+  hint: false,
+  highlight: true,
+}, {
+  name: 'addresses',
+  display: function(obj) {
+    return obj.add_full + ', ' + obj.city;
+  },
+  source: addresses,
+}).on('typeahead:selected', function(evt, item){
+  map_ctrl.zoomToLatLng(item.lat, item.lng);
+
+  let features = leafletPip.pointInLayer(
+    [item.lng, item.lat], map_ctrl.layers.nbo_polygons
+  );
+
+  features.forEach(function(feature){
+    map_ctrl.setSelectedPolygon(feature.feature);
+  });
+});

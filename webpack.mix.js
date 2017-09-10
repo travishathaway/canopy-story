@@ -75,6 +75,7 @@ mix.js([
  * Combine CSS
  */
 .styles([
+    'resources/assets/css/typeaheadjs.css',
     'resources/assets/css/languages.min.css',
     'resources/assets/css/map/leaflet-geojson-selector.css',
     'resources/assets/css/map/MarkerCluster.css',
