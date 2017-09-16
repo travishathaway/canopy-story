@@ -82,15 +82,18 @@
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
+                  <h5 class="modal-title">Canopy Story</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
-                  Canopy story at <span class="font-weight-bold">{{ $post->tree_location }}</span> by
-                  <span class="font-weight-bold">
-                    {{ $post->user->first_name}} {{ strtoupper(substr($post->user->last_name, 0, 1)) . '.'}}
-                  </span>
                 </div>
                 <div class="modal-body">
+                  <strong>Location:</strong> {{ $post->tree_location }}
+                  <span class="ml-3">
+                      <strong>Author: </strong>
+                        {{ $post->user->first_name}} {{ strtoupper(substr($post->user->last_name, 0, 1)) . '.'}}
+                  </span>
+                  <hr />
                   {!! nl2br(e($post->content)) !!}
                 </div>
               </div>

@@ -5,18 +5,12 @@ import 'leaflet.markercluster';
 import leafletPip from '@mapbox/leaflet-pip';
 import 'jquery';
 import 'bootstrap';
-import Resumable from 'resumablejs';
 import Bloodhound from '../typeahead.js/bloodhound.js';
 
 
 // Custom module imports
 import StyleHelpers from './lib/style_helpers.js';
 import storyMapFileUploadInit from './lib/upload.js';
-
-/**
- * Make Resumable global for use elsewhere
- */
-window.Resumable = Resumable;
 
 /**
  * Module consts that really come from a global object
@@ -118,7 +112,8 @@ class MapCtrl {
           });
         },
         style: {
-          color:'green'
+          color:'green',
+          stroke: '2'
         },
         pointToLayer: function(feature, latlng){
             return new L.CircleMarker(
