@@ -131,6 +131,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Google Analytics ID
+    |--------------------------------------------------------------------------
+    |
+    | This key is used by the Illuminate encrypter service and should be set
+    | to a random, 32 character string, otherwise these encrypted strings
+    | will not be safe. Please do this before deploying an application!
+    |
+    */
+
+    'ga_id' => env('APP_GA_ID'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Logging Configuration
     |--------------------------------------------------------------------------
     |
@@ -219,6 +232,11 @@ return [
          * Laravel Passport: https://laravel.com/docs/5.4/passport
          */
         Laravel\Passport\PassportServiceProvider::class,
+
+        /**
+         * Laravel Sentry Plugin: https://github.com/getsentry/sentry-laravel
+         */
+        Sentry\SentryLaravel\SentryLaravelServiceProvider::class,
     ],
 
     /*
@@ -272,6 +290,7 @@ return [
         'Minify' => Devfactory\Minify\Facades\MinifyFacade::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'Sentry' => Sentry\SentryLaravel\SentryFacade::class,
     ],
 
 ];
