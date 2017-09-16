@@ -31,37 +31,12 @@ mix.js([
 )
 
 /**
- * Combine Map JS
- */
-.combine([
-    'resources/assets/bower/resumable.js/resumable.js',
-    'resources/assets/bower/leaflet/dist/leaflet.js',
-    'resources/assets/bower/leaflet-ajax/dist/leaflet.ajax.js',
-    'resources/assets/bower/leaflet-hash/leaflet-hash.js',
-    'resources/assets/js/map/GeoJSON.js',
-    'resources/assets/js/map/Autolinker.min.js',
-    'resources/assets/js/map/MarkerClusterGroup.js',
-    'resources/assets/js/map/GeoJSONCluster.js',
-    'resources/assets/js/map/visibility.js',
-    'resources/assets/js/map/leaflet-geojson-selector.js',
-    'resources/assets/js/map/exp_cutnbo.js',
-    'resources/assets/js/map/metro.js',
-    'resources/assets/js/map/popup.js', 
-    'resources/assets/js/map/main.js',
-], 'public/js/map.js')
-
-/**
- * Second version of the map js
+ * Javascript for the story map js
  */
 .js(
   'resources/assets/js/story-map/app.js',
   'public/js/story-map.js'
 )
-
-/**
- * Upload JS for images on map
- */
-.js('resources/assets/js/upload.js', 'public/js/upload.js')
 
 /**
  * RevealJS

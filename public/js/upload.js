@@ -1,1 +1,76 @@
-!function(e){function t(o){if(n[o])return n[o].exports;var i=n[o]={i:o,l:!1,exports:{}};return e[o].call(i.exports,i,i.exports,t),i.l=!0,i.exports}var n={};t.m=e,t.c=n,t.d=function(e,n,o){t.o(e,n)||Object.defineProperty(e,n,{configurable:!1,enumerable:!0,get:o})},t.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(n,"a",n),n},t.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},t.p="",t(t.s=4)}({4:function(e,t,n){e.exports=n("tCUV")},tCUV:function(e,t){function n(){return"xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,function(e){var t=16*Math.random()|0;return("x"==e?t:3&t|8).toString(16)})}function o(){for(var e=["<ul>"],t=0;t<r.files.length;t++)e.push("<li><span data-index='"+t+"' class='remove-file glyphicon glyphicon-remove'></span>"+r.files[t].fileName+"</li>");e.push("</ul>"),$("#dropbox").html(e.join(""))}function i(e){var t=e.split(".").pop().toLowerCase();return-1!=s.indexOf(t)}CHUNK_SIZE=1*Math.pow(2,20);var r=new Resumable({target:"/post/image",testChunks:!1,maxChunkRetries:3,chunkRetryInterval:1e3,generateUniqueIdentifier:n,chunkSize:CHUNK_SIZE,query:{main_file_slug:window.location.toString().replace(/\/$/,"").split("/").pop()}});r.on("progress",function(){var e=Math.ceil(100*this.progress())+"%";$("#progress-bar").css("width",e),$("#progress-bar").text(e)}),r.on("fileAdded",o),r.on("fileError",function(e,t){$("#error-message").val(t),$("#form").submit(),r.cancel()}),r.on("complete",function(){for(var e=[],t=[],n=0;n<r.files.length;n++){var o=r.files[n].uniqueIdentifier,s=r.files[n].fileName,a=o+s,l=$("<input>").attr({id:"image-filepath-"+n,type:"hidden",name:"image-filepath[]"}).val(a);t.push(l),e.push(i(s))}e.every(function(e){if(!0===e)return!0})?($("#form").append(t),setTimeout(function(){$("#form").submit()},1e3)):(document.cookie="message=ERROR: Files of that type are not allowed. Post was not submitted; expires="+Date.now()+"10; path=/",window.location="/list")}),r.assignBrowse(document.getElementById("file")),r.assignDrop(document.getElementById("dropbox")),$("#submit-treestory").on("click",function(e){r.files.length>0?(r.upload(),$(this).hide(),$(".progress").show()):$("#form").submit()}),$(".leaflet-popup-close-button").click(function(){dropbox()}),$("#dropbox").on("click",function(e){$("#file").click()}),$("#dropbox").on("click",".remove-file",function(e){e.stopPropagation();var t=parseInt($(this).data("index"));r.removeFile(r.files[t]),o()});var s=["jpg","png","gif","jpeg","bmp"]}});
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ 4:
+/***/ (function(module, exports, __webpack_require__) {
+
+(function webpackMissingModule() { throw new Error("Cannot find module \"/Users/travishathaway/dev/canopy-story/resources/assets/js/upload.js\""); }());
+
+
+/***/ })
+
+/******/ });

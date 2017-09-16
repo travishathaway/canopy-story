@@ -22,7 +22,7 @@
             <div class="form-group">
                 <input type="hidden" name="tree_location" value="--tree_location--" />
                 <input type="hidden" name="tree_id" value="--tree_id--" />
-                <textarea rows="10" class="form-control" name="treestory" id="textbox"></textarea>
+                <textarea rows="10" class="form-control" name="treestory" id="textbox" placeholder="Share here..."></textarea>
             </div>
         </form>
         <input name='file' type="file" id="file" style="display:none" />

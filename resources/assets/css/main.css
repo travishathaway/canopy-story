@@ -459,3 +459,15 @@ th {
 .leaflet-top.leaflet-right .leaflet-control {
   margin-top: 70px;
 }
+
+/**
+.marker-cluster-large {
+  background-color: #18451A;
+}
+.marker-cluster-medium {
+  background-color: #318C35;
+}
+.marker-cluster-small {
+  background-color: #5AFF61;
+}
+**/

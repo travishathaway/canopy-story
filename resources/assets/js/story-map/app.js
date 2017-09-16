@@ -11,8 +11,7 @@ import Bloodhound from '../typeahead.js/bloodhound.js';
 
 // Custom module imports
 import StyleHelpers from './lib/style_helpers.js';
-import './lib/GeoJSON.js';
-
+import storyMapFileUploadInit from './lib/upload.js';
 
 /**
  * Make Resumable global for use elsewhere
@@ -27,6 +26,15 @@ const BASE_DIR = window.StoryMap.base_dir;
 const LOGGED_IN = window.StoryMap.logged_in;
 const UPLOAD_FILE_LOC = window.StoryMap.upload_file_location;
 const SHARE_EMAIL = window.StoryMap.share_email;
+
+
+const LEAFLET_CLUSER_MARKER_OPTIONS = {
+  disableClusteringAtZoom: 18,
+  spiderfyOnMaxZoom: false,
+  polygonOptions: {
+    color: 'green'
+  }
+};
 
 
 /**
@@ -61,6 +69,12 @@ class MapCtrl {
      * current location
      */
     this.current_location = undefined;
+
+    /**
+     * Makes sure we only load the required UPLOAD_FILE_LOC js
+     * file just once
+     */
+    this.upload_js_loaded = false;
   }
 
   /**
@@ -75,15 +89,12 @@ class MapCtrl {
     }
 
     $.getJSON(filename, function(data){
-      that.markers = L.markerClusterGroup({
-        disableClusteringAtZoom: 18
-      });
+      that.markers = L.markerClusterGroup(LEAFLET_CLUSER_MARKER_OPTIONS);
 
       that.markers.addLayer(L.geoJson(data, {
         onEachFeature: function(feature, layer){
           layer.on({
             click: function(e){
-              console.log(e.target.feature.properties);
               var popup_html = that.popup_html;
 
               popup_html = popup_html.replace(
@@ -98,9 +109,8 @@ class MapCtrl {
               $('#popup #tree-location').text(that.selected_polygon_props.NAME);
               $('#popup #tree-id').text(e.target.feature.id);
 
-              // Get the script having to do with uploads,
-              // but only when an upload needs to be done
-              $.getScript(UPLOAD_FILE_LOC);
+              // Initialized ResumableJs stuff for file uploads
+              storyMapFileUploadInit();
 
               // Show modal
               $('#formModal').modal();
