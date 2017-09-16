@@ -268,6 +268,7 @@ var info = L.control();
  * Add the urban boundary to the map
  */
 $.ajax({
+  dataType: 'json',
   url: '/data/metro_boundary.json',
   method: 'GET',
   success: function(data){
@@ -288,6 +289,7 @@ $.ajax({
  * Add the neighborhood boundaries to the map
  */
 $.ajax({
+  dataType: 'json',
   url: '/data/neighborhood_boundaries.json',
   method: 'GET',
   success: function(data){
