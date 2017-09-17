@@ -4,11 +4,34 @@ namespace App\Http\Controllers;
 
 use LanguageDetection\Language;
 
+use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Post;
 use App\Models\PostImage;
+
+
+/**
+ * Request sub class to handle request for the post resource
+ */
+class PostRequest extends FormRequest
+{
+    public function authorize()
+    {
+        return true;
+    }
+
+    public function rules()
+    {
+        return [
+            'treestory' => 'required|string',
+            'tree_location' => 'required|string',
+            'tree_id' => 'required|string'
+        ];
+    }
+}
+
 
 class PostController extends Controller
 {
@@ -37,19 +60,13 @@ class PostController extends Controller
     /**
      * This is the endpoint for creating a new post
      */
-    public function create(Request $request)
+    public function create(PostRequest $request)
     {
         $images = $request->get('image-filepath');
 
         $treestory = $request->input('treestory');
         $tree_location = $request->input('tree_location');
         $tree_id = $request->input('tree_id'); 
-
-        // Check required fields
-        if(empty($tree_id) || empty($tree_location) || empty($treestory)){
-          return abort(400, 'Required fields "tree_id", "tree_location" and 
-            "treestory" not present');
-        }
 
         // Create the post
         $post = new Post;

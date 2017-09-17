@@ -130,4 +130,24 @@ class PostTest extends TestCase
         $this->assertEquals(1, count($posts));
         $this->assertEquals('es', $posts[0]->language);
     }
+
+    /**
+     * Test the scenario where tree id is zero
+     */
+    public function testWithTreeIdZero()
+    {
+        $user = factory(User::class)->create();
+
+        # Create the posts
+        $story_text = 'So, yeah, there really are tree ids that equal zero :/';
+        $response = $this->actingAs($user)->post('/post', [
+            'tree_location' => 'REED',
+            'tree_id' => '0',
+            'treestory' => $story_text
+        ]);
+
+        $response->assertStatus(302);
+        $response->assertSessionMissing('danger');
+        $response->assertRedirect('/post');
+    }
 }
