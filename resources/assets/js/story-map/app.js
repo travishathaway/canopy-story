@@ -103,8 +103,11 @@ class MapCtrl {
               $('#popup #tree-location').text(that.selected_polygon_props.NAME);
               $('#popup #tree-id').text(e.target.feature.id);
 
-              // Initialized ResumableJs stuff for file uploads
-              storyMapFileUploadInit();
+              // Initialized ResumableJs stuff for file uploads if 
+              // the user is logged in
+              if( LOGGED_IN === true ){
+                storyMapFileUploadInit();
+              }
 
               // Show modal
               $('#formModal').modal();

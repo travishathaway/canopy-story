@@ -97,12 +97,14 @@ function storyMapFileUploadInit(){
   // start the upload process
   
   $('#submit-treestory').on("click", function(e){
-      if(r.files.length > 0){
-          r.upload();
-          $(this).hide();
-          $(".progress").show();
-      } else {
-          $("#form").submit();
+      if( r.files !== undefined ){
+          if(r.files.length > 0){
+              r.upload();
+              $(this).hide();
+              $(".progress").show();
+          } else {
+              $("#form").submit();
+          }
       }
   });
   
