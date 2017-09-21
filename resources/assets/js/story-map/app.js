@@ -99,7 +99,9 @@ class MapCtrl {
 
               // Put form HTML in modal
               $('#formModal .modal-body').html(popup_html);
-              $('#popup #tree-height').text(e.target.feature.properties.d_ft);
+              $('#popup #tree-height').text(
+                Math.round(e.target.feature.properties.MAX_GRID_C)
+              );
               $('#popup #tree-location').text(that.selected_polygon_props.NAME);
               $('#popup #tree-id').text(e.target.feature.id);
 
