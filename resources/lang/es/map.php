@@ -10,8 +10,8 @@ return [
     | which is the main part of this application
     |
     */
-
-    'tell_my_story_button' => 'Cuente mi historia'
+    'tell_my_story_button' => 'Cuente mi historia',
+    'how_to_use_map' => 'Como usar la mapa'
 ];
 
 ?>

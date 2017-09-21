@@ -3,13 +3,13 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title text-center">How to use this map</h5>
+        <h5 class="modal-title text-center">@lang('map.how_to_use_map')</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <iframe	id="tutorial-iframe" src="{{url('help')}}?lang={{\App::getLocale()}}"></iframe>
+        <iframe	id="tutorial-iframe" src="{{url('help')}}"></iframe>
       </div>
       <div class="modal-footer-center">
         <button type="button" class="btn btn-primary" 

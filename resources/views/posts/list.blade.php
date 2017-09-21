@@ -10,13 +10,13 @@
 @section('content')
   <div class="row">
     <div class="ml-auto col-sm-12 col-lg-8 mr-auto">
-      <h1 class="mt-4">Find Stories</h1>
+      <h1 class="mt-4">@lang('menu.find_stories')</h1>
     </div>
   </div>
   <form action="" method="get" >
     <div class="row">
       <div class="ml-auto col-sm-12 col-md-8 col-lg-5">
-        <input type="text" class="form-control" name="q" placeholder="Seach for a Canopy Story"
+        <input type="text" class="form-control" name="q" placeholder="@lang('post_list.search_placeholder')"
             value="{{ $q }}"/>
       </div>
       <div class="col-sm-12 col-md-4 col-lg-3 mr-auto">
@@ -47,8 +47,8 @@
   <div class="row">
     <div class="col-md-12 white-bkgrnd">
       <div class="text-center">
-        <h3>No Results</h3>
-        <p>Please try searching for other terms</p>
+        <h3>@lang('post_list.no_results')</h3>
+        <p>@lang('post_list.search_other')</p>
         <br />
       </div>
     </div>

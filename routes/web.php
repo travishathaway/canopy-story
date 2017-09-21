@@ -61,6 +61,12 @@ Route::get('/logout', function() {
     return redirect('/');
 });
 
+// Special route for setting site language
+Route::post('/language', [
+    'as' => 'language',
+    'uses' => 'LanguageController@set'
+]);
+
 // Routes for the App
 //
 /**

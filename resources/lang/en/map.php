@@ -11,7 +11,8 @@ return [
     |
     */
     
-    'tell_my_story_button' => 'Tell my story'
+    'tell_my_story_button' => 'Tell my story',
+    'how_to_use_map' => 'How to use this map'
 ];
 
 ?>

@@ -42,15 +42,20 @@
       <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
     @endif
         <li class="nav-item mr-2">
-            @if(\App::getLocale() === 'en')
-            <a href="?lang=es" class="btn btn-light btn-sm" >
-                Español
-            </a>
-            @else
-            <a href="?lang=en" class="btn btn-light btn-sm">
-                English
-            </a>
-            @endif
+            <form method="post" action="{{url('language')}}" style="margin: 0">
+                {{ csrf_field() }}
+                @if(\App::getLocale() === 'en')
+                <input type="hidden" name="lang" value="es" />
+                <button type="submit" class="btn btn-light btn-sm" >
+                    Español
+                </button>
+                @else
+                <input type="hidden" name="lang" value="en" />
+                <button type="submit" class="btn btn-light btn-sm" >
+                    English
+                </button>
+                @endif
+            </form>
         </li>
         <li class="nav-item">
             @if(Auth::check())
