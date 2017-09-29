@@ -22,7 +22,7 @@ html, body, #map {
         </button>
     </div>
     <div class="map-search">
-        <input class="form-control typeahead" type="text" placeholder="Enter address..." />
+        <input class="form-control typeahead" type="text" placeholder="@lang('site.enter_address')" />
     </div>
     <div class="modal fade" id="formModal">
       <div class="modal-dialog" role="document">

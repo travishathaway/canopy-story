@@ -1,7 +1,8 @@
 <nav class="nav fixed-top navbar-expand-md navbar-dark bg-dark">
     <a class="navbar-brand" href="{{route('index')}}">Canopy Story</a>
 
-    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -68,16 +69,16 @@
 
               <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                 <a class="dropdown-item" href="{{ route('user.profile', ['id' => Auth::user()->id]) }}">
-                    Profile
+                    @lang('site.profile')
                 </a>
                 <a class="dropdown-item" role="button" href="{{ url('logout') }}">
-                  <span class='glyphicon glyphicon-user'></span> Logout
+                  <span class='glyphicon glyphicon-user'></span> @lang('site.logout')
                 </a>
               </div>
             </div>
             @else
             <a class="btn btn-primary btn-sm  my-2 my-sm-0" role="button" href="{{ url('login') }}">
-              <span class='glyphicon glyphicon-user'></span> Login
+              <span class='glyphicon glyphicon-user'></span> @lang('site.login')
             </a>
             @endif
         </li>

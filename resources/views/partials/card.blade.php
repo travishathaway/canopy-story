@@ -74,7 +74,7 @@
           @if(strlen($post->content) > 250)
           <div class="text-right mt-4">
             <a href="#" title="Read More" data-toggle="modal" data-target="#post-detail-modal-{{$loop->iteration}}">
-              Read More...
+              @lang('site.read_more')
             </a>
           </div>
           <div class="modal fade" id="post-detail-modal-{{$loop->iteration}}" tabindex="-1" 

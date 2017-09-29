@@ -15,5 +15,3 @@ return [
     'search_other' => 'Please try searching for other terms'
 ];
 
-?>
-
