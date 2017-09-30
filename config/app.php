@@ -237,6 +237,12 @@ return [
          * Laravel Sentry Plugin: https://github.com/getsentry/sentry-laravel
          */
         Sentry\SentryLaravel\SentryLaravelServiceProvider::class,
+
+        /**
+         * Laravel Excel/CSV exporting/importing library
+         * http://www.maatwebsite.nl/laravel-excel/docs/getting-started
+         */
+        Maatwebsite\Excel\ExcelServiceProvider::class,
     ],
 
     /*
@@ -251,7 +257,6 @@ return [
     */
 
     'aliases' => [
-
         'App' => Illuminate\Support\Facades\App::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
         'Auth' => Illuminate\Support\Facades\Auth::class,
@@ -291,6 +296,6 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Sentry' => Sentry\SentryLaravel\SentryFacade::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ],
-
 ];

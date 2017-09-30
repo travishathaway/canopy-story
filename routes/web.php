@@ -121,6 +121,11 @@ Route::get('/post', [
   'uses' => 'PostController@get'
 ]);
 
+Route::get('/admin/post', [
+    'as' => 'admin.post',
+    'uses' => 'PostController@adminGet'
+])->middleware('admin');
+
 /**
  * Survey Controllers
  */
@@ -135,6 +140,18 @@ Route::post('/survey', [
   'uses' => 'SurveyController@create'
 ])->middleware('auth');
 
+
+/**
+ * Admin Pages Controllers
+ */
+Route::get('/admin', function(){
+    return view('admin.index');
+})->name('admin')->middleware('admin');
+
+Route::get('/admin/response_data', [
+  'as' => 'admin.response_data',
+  'uses' => 'AdminPagesController@response_data'
+])->middleware('admin');
 
 /**
  * User Controllers
