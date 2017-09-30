@@ -138,9 +138,13 @@ class PostController extends Controller
     }
 
     /**
-     * Retrieves a list of posts for our list template
+     * We use this method to get post from a request and supply we
+     * template we should to render it
+     *
+     * @param $request Request
+     * @param $template string
      */
-    public function get(Request $request)
+    private function _get(Request $request, $template)
     {
         $search_user = User::where('first_name', 'like', "%$request->q%")
             ->orWhere('last_name', 'like', "%$request->q%")->pluck('id')->all();
@@ -154,10 +158,27 @@ class PostController extends Controller
             $user = User::find($user->id);
         }
 
-        return view('posts.list', [
+        return view($template, [
             'posts' => $posts,
             'user' => $user,
             'q' => $request->q
         ]);
     }
+
+    /**
+     * Retrieves a list of posts for our public list template
+     */
+    public function get(Request $request)
+    {
+        return $this->_get($request, 'posts.list');
+    }
+
+    /**
+     * Retrieves a list of posts for our admin list template
+     */
+    public function adminGet(Request $request)
+    {
+        return $this->_get($request, 'posts.admin_list');
+    }
+
 }
