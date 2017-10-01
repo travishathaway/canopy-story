@@ -68,10 +68,16 @@
               </a>
 
               <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                @if((Auth::user()->isAdmin()))
+                <a class="dropdown-item" role="button" href="{{ route('admin') }}">
+                  <span class='glyphicon glyphicon-user'></span> Admin
+                </a>
+                <hr class="mt-0 mb-1" />
+                @endif
                 <a class="dropdown-item" href="{{ route('user.profile', ['id' => Auth::user()->id]) }}">
                     @lang('site.profile')
                 </a>
-                <a class="dropdown-item" role="button" href="{{ url('logout') }}">
+                <a class="dropdown-item" role="button" href="{{ route('logout') }}">
                   <span class='glyphicon glyphicon-user'></span> @lang('site.logout')
                 </a>
               </div>
