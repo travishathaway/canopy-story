@@ -31,12 +31,12 @@
     <div class="card-body">
       <div class="row">
         <div class="col-md-9">
-          <span class="font-weight-bold">By: </span>{{ $post->user->first_name}}  {{ strtoupper(substr($post->user->last_name, 0, 1)) . '.'}}
+          <span class="font-weight-bold">@lang('site.by'): </span>{{ $post->user->first_name}}  {{ strtoupper(substr($post->user->last_name, 0, 1)) . '.'}}
         </div>
         <div class="col-md-3">
           @if($user) 
           @if($user->id == $post->user_id || $user->isAdmin())
-          <form method="POST" onsubmit="return confirm('Are you sure you want to delete this post?')" action="{{route('post.delete', $post->id)}}"
+          <form method="POST" onsubmit="return confirm('@lang('site.delete_post')')" action="{{route('post.delete', $post->id)}}"
             class="pull-right">
             {{ csrf_field() }}
             <input type="hidden" value="8" name="id">
@@ -46,7 +46,7 @@
           </form>
           @endif
           @if($user->isAdmin())
-          <form method="POST" onsubmit="return confirm('Are you sure you want to flag this post?')" action="{{route('post.update', $post->id)}}"
+          <form method="POST" onsubmit="return confirm('@lang('site.flag_post')')" action="{{route('post.update', $post->id)}}"
             class="pull-right" style="margin-right: 3px">
             {{ csrf_field() }}
             <input type="hidden" value="1" name="flagged">
@@ -60,7 +60,7 @@
       </div>
       <div class="row">
         <div class="col-md-12">
-          <span class="font-weight-bold">Location: </span>
+          <span class="font-weight-bold">@lang('site.location'): </span>
           <a class="" href="{{ url('post') }}?q={{ $post->tree_location }}">
             {{ $post->tree_location }}
           </a>
@@ -88,9 +88,9 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                  <strong>Location:</strong> {{ $post->tree_location }}
+                  <strong>@lang('site.location'):</strong> {{ $post->tree_location }}
                   <span class="ml-3">
-                      <strong>Author: </strong>
+                      <strong>@lang('site.author'): </strong>
                         {{ $post->user->first_name}} {{ strtoupper(substr($post->user->last_name, 0, 1)) . '.'}}
                   </span>
                   <hr />
@@ -105,7 +105,7 @@
       </div>
     </div>
     <div class="card-footer">
-      <span class="font-weight-bold">Posted: </span>{{ $post->created_at->diffForHumans()  }}
+      <span class="font-weight-bold">@lang('site.posted'): </span>{{ $post->created_at->diffForHumans()  }}
     </div>
   </div>
 </div>

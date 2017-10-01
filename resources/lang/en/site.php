@@ -15,9 +15,12 @@ return [
     'email' => 'Email',
     'save' => 'Save',
     'cancel' => 'Cancel',
+    'search' => 'Search',
+    'reset' => 'Reset',
     'submit' => 'Submit',
     'login' => 'Login',
     'logout' => 'Logout',
+    'by' => 'By',
     'login_to' => 'Login to ',
     'share_your' => 'Share your story',
     'tree_info' => 'Tree Information',
@@ -28,5 +31,7 @@ return [
     'share_here' => 'Share here...',
     'do_you_have_a_photo' => 'Do you have a photo of this tree? Click here or drop it in this area to upload it.',
     'enter_address' => 'Enter address...',
-    'read_more' => 'Read more...'
+    'read_more' => 'Read more...',
+    'flag_post' => 'Are you sure you want to flag this post?',
+    'delete_post' => 'Are you sure you want to delete this post?'
 ];

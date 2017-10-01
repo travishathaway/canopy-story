@@ -10,9 +10,9 @@ class UserProfile extends Component {
     super()
 
     this.text_fields = [
-      {id: 'first_name', label: 'First Name'},
-      {id: 'last_name', label: 'Last Name'},
-      {id: 'email', label: 'Email'},
+      {id: 'first_name', label: window.UserProfile.trans['first_name']},
+      {id: 'last_name', label: window.UserProfile.trans['last_name']},
+      {id: 'email', label: window.UserProfile.trans['email']},
     ];
 
     this.state = {
@@ -141,7 +141,7 @@ class UserProfile extends Component {
         <div className="pull-right">
           {form_state === 'view' && 
             <Button color="secondary" onClick={this.toggleProfileState.bind(this)}>
-              Edit
+            {window.UserProfile.trans['edit']}
             </Button>
           }
         </div>
@@ -157,13 +157,13 @@ class UserProfile extends Component {
               onClick={this.cancel.bind(this)}
               disabled={form_state === 'loading'}
             >
-              Cancel
+              {window.UserProfile.trans['cancel']}
             </Button>
             <Button color="primary" className="ml-2" 
               onClick={this.save.bind(this)}
               disabled={form_state === 'loading'}
             >
-              Save
+              {window.UserProfile.trans['save']}
             </Button>
           </div>
         }

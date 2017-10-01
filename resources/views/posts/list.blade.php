@@ -22,10 +22,10 @@
       <div class="col-sm-12 col-md-4 col-lg-3 mr-auto">
         <div class="row">
           <div class="col-6">
-            <button type="submit" class="btn btn-primary btn-block">Search</button>
+            <button type="submit" class="btn btn-primary btn-block">@lang('site.search')</button>
           </div>
           <div class="col-6">
-            <a href="{{ url('post') }}" role="button" class='btn btn-dark btn-block'>Reset</a>
+            <a href="{{ url('post') }}" role="button" class='btn btn-dark btn-block'>@lang('site.reset')</a>
           </div>
         </div>
       </div>
