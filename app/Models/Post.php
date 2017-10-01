@@ -50,8 +50,8 @@ class Post extends Model
         $query = self::with('images')->with('user')
             ->where(function($query) use ($request){
                 if($request->q){
-                    $query = $query->orWhere('content', 'like', "%$request->q%")
-                        ->orWhere('tree_location', 'like', "%$request->q%");
+                    $query = $query->orWhere('content', 'ilike', "%$request->q%")
+                        ->orWhere('tree_location', 'ilike', "%$request->q%");
                 }
             });
 

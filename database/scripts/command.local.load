@@ -1,0 +1,8 @@
+LOAD DATABASE
+    FROM mysql://canopy:canopy@localhost/canopy
+    INTO postgresql://travishathaway@localhost/canopy
+CAST 
+    type timestamp to timestamp drop default drop not null using zero-dates-to-null
+
+
+ALTER SCHEMA 'canopy' RENAME TO 'public';

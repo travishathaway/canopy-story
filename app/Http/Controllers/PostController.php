@@ -146,8 +146,8 @@ class PostController extends Controller
      */
     private function _get(Request $request, $template)
     {
-        $search_user = User::where('first_name', 'like', "%$request->q%")
-            ->orWhere('last_name', 'like', "%$request->q%")->pluck('id')->all();
+        $search_user = User::where('first_name', 'ilike', "%$request->q%")
+            ->orWhere('last_name', 'ilike', "%$request->q%")->pluck('id')->all();
 
         $query = Post::getPostList($request, $search_user, \App::getLocale());
 
