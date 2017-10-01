@@ -20,6 +20,7 @@ return [
     'submit' => 'Submit',
     'login' => 'Login',
     'logout' => 'Logout',
+    'edit' => 'Edit',
     'by' => 'By',
     'login_to' => 'Login to ',
     'share_your' => 'Share your story',
