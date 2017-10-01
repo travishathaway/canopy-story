@@ -33,5 +33,7 @@ return [
     'enter_address' => 'Enter address...',
     'read_more' => 'Read more...',
     'flag_post' => 'Are you sure you want to flag this post?',
-    'delete_post' => 'Are you sure you want to delete this post?'
+    'delete_post' => 'Are you sure you want to delete this post?',
+    'posted' => 'Posted',
+    'author' => 'Author'
 ];
