@@ -40,6 +40,14 @@ mix.js([
 )
 
 /**
+ * Nice to have jQuery for small pages and embedded JS
+ */
+.copy(
+  'node_modules/jquery/dist/jquery.min.js',
+  'public/js/jquery.min.js'
+)
+
+/**
  * RevealJS
  */
 .combine([

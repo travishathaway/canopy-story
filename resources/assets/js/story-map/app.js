@@ -88,6 +88,17 @@ class MapCtrl {
       that.markers.addLayer(L.geoJson(data, {
         onEachFeature: function(feature, layer){
           layer.on({
+            mouseover: function(e){
+              e.target.setStyle({
+                'radius': 12
+              });
+            },
+            mouseout: function(e){
+              var feature = e.target.feature;
+              e.target.setStyle(
+                StyleHelpers.doStyleTrees(feature, feature.properties.asd)
+              )
+            },
             click: function(e){
               var popup_html = that.popup_html;
 
@@ -129,7 +140,6 @@ class MapCtrl {
 
       that.map.addLayer(that.markers);
     });
-
   }
 
   /**
@@ -137,13 +147,17 @@ class MapCtrl {
    * gets the point data for this polygon and sets it as selected.
    */
   zoomToFeature(e) {
+    var prev_feature_id = this.selected_polygon_id;
+
     this.setSelectedPolygon(e.target.feature);
     e.target.setStyle(StyleHelpers.getSelectedNboStyle());
 
     this.layers.nbo_polygons.setStyle(StyleHelpers.getDefaultStyle())
 
-    // Zoom map to feature
-    this.map.fitBounds(e.target.getBounds());
+    // Zoom map to feature if it isn't already selected 
+    if( prev_feature_id !== this.selected_polygon_id ){
+      this.map.fitBounds(e.target.getBounds());
+    }
   }
 
   /**
