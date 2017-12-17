@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import {FormGroup, Label, Input, Button} from 'reactstrap';
+import {FormGroup, Label, Button} from 'reactstrap';
 
 // Special axios with our CSRF Token added
 import axios from '../axios';
+
+import TextField from './utils';
+
 
 class UserProfile extends Component {
   constructor(){
@@ -172,59 +175,37 @@ class UserProfile extends Component {
   }
 }
 
-
-class TextField extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      /**
-       * Holds the value for the input field
-       */
-      value: props.value,
-      /**
-       * Holds state of form. We're interested in the 'loading' state
-       * primarily for the field
-       */
-      form_state: props.form_state,
-      /**
-       * Holds the state for the field, choices are: 'edit', 'error'
-       */
-      field_state: 'edit'
-    }
-  }
-
-  /**
-   * This will update the value of the form field especially 
-   * in ajax context
-   */
-  componentWillReceiveProps(nextProps) {
-    this.setState({value: nextProps.value});
-    this.setState({form_state: nextProps.form_state});
-  }
-
-  render() {
-    var field_color = this.state.field_state === 'error' ? 'danger' : '';
-
+class UserStories extends Component {
+  render(){
     return (
-      <FormGroup color={field_color}>
-        <Label for={this.props.id}>
-          <strong>{this.props.label}</strong>
-        </Label>
-        <Input type="text" name={this.props.id} state={field_color}
-          disabled={this.state.form_state === 'loading'}
-          value={this.state.value} onChange={this.props.onChange}>
-        </Input>
-      </FormGroup>
+      <div>
+        <h2>Stories</h2>
+      </div>
     )
   }
 }
 
+
+class UserPage extends Component {
+
+  render(){
+    return (
+      <div className="row">
+        <div className="col-3">
+          <UserProfile />
+        </div>
+        <div className="col-9">
+          <UserStories />
+        </div>
+      </div>
+    )
+  }
+}
 
 export default UserProfile;
 
 // We only want to try to render our component on pages that have a div with an ID
 // of "example"; otherwise, we will see an error in our console 
 if (document.getElementById('user-profile')) {
-    ReactDOM.render(<UserProfile />, document.getElementById('user-profile'));
+    ReactDOM.render(<UserPage />, document.getElementById('user-profile'));
 }
