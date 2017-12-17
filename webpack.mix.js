@@ -67,7 +67,8 @@ mix.js([
     'resources/assets/bower/bootstrap/dist/css/bootstrap.min.css',
     'resources/assets/bower/leaflet/dist/leaflet.css',
     'resources/assets/bower/fancybox/dist/jquery.fancybox.min.css',
-    'resources/assets/css/main.css'
+    'resources/assets/css/main.css',
+    'resources/assets/css/front-page.css'
 ], 'public/css/all.css')
 
 /**

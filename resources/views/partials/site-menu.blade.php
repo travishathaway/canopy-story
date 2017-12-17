@@ -9,7 +9,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav justify-content-end">
         <li class="nav-item">
-            <a class="nav-link" href="/">@lang('menu.tell_story')</a>
+            <a class="nav-link" href="{{ route('map') }}">@lang('menu.tell_story')</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ route('post') }}">@lang('menu.find_stories')</a>
@@ -17,8 +17,31 @@
         <!--li class="nav-item">
             <a class="nav-link" href="{{ route('about') }}">@lang('menu.about_us')</a>
         </li-->
+        @if(Auth::check())
+        <!-- Mobile Layout -->
+        <div class="d-md-none">
+            <hr class="mt-0 mb-1" />
+            @if((Auth::user()->isAdmin()))
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('admin') }}">
+                <span class='glyphicon glyphicon-user'></span> Admin
+              </a>
+            </li>
+            @endif
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('user.profile', ['id' => Auth::user()->id]) }}">
+                  @lang('site.profile')
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" role="button" href="{{ route('logout') }}">
+                <span class='glyphicon glyphicon-user'></span> @lang('site.logout')
+              </a>
+            </li>
+        </div>
+        @endif
       </ul>
-      <div class="d-flex flex-row ml-auto mr-auto logo-container">
+      <div class="flex-row ml-auto mr-auto d-md-flex d-none logo-container">
         <div class="pr-2" style="border-right: 1px solid #eee">
           <a href="https://www.pdx.edu/sustainability/iss" 
               title="Portland State University Institute for Sustainable Solutions">
@@ -27,32 +50,32 @@
           </a>
         </div>
         <div class="ml-2 mr-2">
-        <a href="https://www.fs.fed.us/" title="U.S. Forest Service">
-          <div id="fs-logo">
-          </div>
-        </a>
+          <a href="https://www.fs.fed.us/" title="U.S. Forest Service">
+            <div id="fs-logo">
+            </div>
+          </a>
+        </div>
       </div>
-    </div>
     @if(isset($is_map))
     <!--form class="form-inline ml-md-auto mr-5 my-lg-0">
       <input class="form-control " type="text" placeholder="@lang('menu.search_bar')" 
         aria-label="Search" style="width: 250px">
     </form-->
-      <ul class="navbar-nav flex-row d-none d-md-flex">
+      <ul class="navbar-nav flex-row d-md-flex">
     @else
-      <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+      <ul class="navbar-nav flex-row ml-md-auto d-md-flex">
     @endif
         <li class="nav-item mr-2">
             <form method="post" action="{{url('language')}}" style="margin: 0">
                 {{ csrf_field() }}
                 @if(\App::getLocale() === 'en')
                 <input type="hidden" name="lang" value="es" />
-                <button type="submit" class="btn btn-light btn-sm" >
+                <button type="submit" class="btn btn-light btn-sm my-2 my-sm-0" >
                     Español
                 </button>
                 @else
                 <input type="hidden" name="lang" value="en" />
-                <button type="submit" class="btn btn-light btn-sm" >
+                <button type="submit" class="btn btn-light btn-sm my-2 my-sm-0" >
                     English
                 </button>
                 @endif
@@ -60,7 +83,8 @@
         </li>
         <li class="nav-item">
             @if(Auth::check())
-            <div class="dropdown show">
+            <!-- Desktop Layout -->
+            <div class="dropdown show d-none d-md-block">
               <a class="text-white mr-2 ml-2" style="padding: 5px" href="#" role="button" 
                     id="dropdownMenuLink" data-toggle="dropdown" 
                     aria-haspopup="true" aria-expanded="false">
@@ -90,5 +114,4 @@
         </li>
       </ul>
     </div>
-
 </nav>

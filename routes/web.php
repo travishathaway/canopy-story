@@ -23,6 +23,19 @@ Route::get('/', function() {
     ]);
 })->name('index');
 
+Route::get('/map', function() {
+    $has_visited = Cookie::get('has_visited');
+
+    if(!$has_visited) {
+        Cookie::queue(Cookie::forever('has_visited', true));
+    }
+
+    return view('map', [
+        'has_visited' => $has_visited
+    ]);
+})->name('map');
+
+
 Route::get('/help', function() {
     if( \App::getLocale() === 'en' ){
         return view('pages.help-en');

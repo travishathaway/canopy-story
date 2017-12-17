@@ -1,13 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-  <div class="row">
-    <div class="ml-auto col-sm-12 col-lg-6 mr-auto">
-      <h1 class="mt-4">@lang('site.profile')</h1>
-      <hr />
-      <div id="user-profile"></div>
-    </div>
-  </div>
+<div id="user-profile"></div>
 @endsection
 
 @section('script')

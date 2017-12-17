@@ -49,6 +49,7 @@ class SocialController extends Controller
                 ->with('message', 'You did not share your profile data with our social app.');
         }
 
+        # TODO: Getting "InvalidStateError"s here some times. Still don't know why that is
         $user = Socialite::driver( $provider )->user();
         $socialUser = null;
 

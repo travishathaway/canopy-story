@@ -17,4 +17,6 @@ npm-debug.log
 *.swp
 *.swo
 
+*.DS_Store
+
 resources/assets/bower
