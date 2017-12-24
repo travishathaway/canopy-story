@@ -11,7 +11,7 @@ return [
     |
     */
     'tell_story' => 'Cuente Historia',
-    'find_stories' => 'Encontrar historias',
+    'find_stories' => 'Encontrar Historias',
     'about_us' => 'Sobre Nosotros',
     'search_bar' => 'Introducir lugar o dirección...'
 ];
